@@ -33,9 +33,6 @@
         </tr>
       </table>
     </draggable>
-  <p>
-    {{namsa}}
-  </p>
   </div>
 </template>
 
@@ -79,7 +76,6 @@ export default {
     const draggable = window['vuedraggable'];
 // ここからvue.js記述
     return{
-      namsa:"hello",
       components: {
         'draggable': draggable,
       },
