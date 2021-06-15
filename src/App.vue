@@ -20,8 +20,8 @@
       </tr>
     </table>
     </div>
-  <div>
 
+  <div class="haveBlock">
     <draggable 
       tag="div"
       v-for="(block, bi) in blocks" 
@@ -365,21 +365,37 @@ export default {
         case "p14":
           this.dragName = this.dragItem;
           this.mainBoard[cell.y][cell.x].code = 1
+          this.mainBoard[cell.y = cell.y + 1][cell.x].code = 1
+          this.mainBoard[cell.y][cell.x = cell.x + 1].code = 1
+          this.mainBoard[cell.y][cell.x = cell.x + 1].code = 1
+          this.mainBoard[cell.y = cell.y + 1][cell.x].code = 1
           this.dragItem = "";
         break;
         case "p15":
           this.dragName = this.dragItem;
           this.mainBoard[cell.y][cell.x].code = 1
+          this.mainBoard[cell.y][cell.x = cell.x + 1].code = 1
+          this.mainBoard[cell.y][cell.x = cell.x + 1].code = 1
+          this.mainBoard[cell.y][cell.x = cell.x + 1].code = 1
+          this.mainBoard[cell.y][cell.x = cell.x + 1].code = 1
           this.dragItem = "";
         break;
         case "p16":
           this.dragName = this.dragItem;
           this.mainBoard[cell.y][cell.x].code = 1
+          this.mainBoard[cell.y = cell.y + 1][cell.x].code = 1
+          this.mainBoard[cell.y = cell.y + 1][cell.x].code = 1
+          this.mainBoard[cell.y][cell.x = cell.x + 1].code = 1
+          this.mainBoard[cell.y = cell.y - 1][cell.x].code = 1
           this.dragItem = "";
         break;
         case "p17":
           this.dragName = this.dragItem;
           this.mainBoard[cell.y][cell.x].code = 1
+          this.mainBoard[cell.y = cell.y + 1][cell.x].code = 1
+          this.mainBoard[cell.y][cell.x = cell.x + 1].code = 1
+          this.mainBoard[cell.y = cell.y + 1][cell.x].code = 1
+          this.mainBoard[cell.y][cell.x = cell.x + 1].code = 1
           this.dragItem = "";
         break;
         case "p18":
@@ -417,6 +433,7 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
   display: flex;
+  height: 600px;
 }
 
 .MainTableCell{
@@ -435,5 +452,11 @@ export default {
 }
 .is-1{
     background-color: rgb(43, 144, 226);
+}
+.haveBlock{
+  height: 500px;
+  width: 150px;
+  display: flex;
+  flex-wrap: wrap;
 }
 </style>
