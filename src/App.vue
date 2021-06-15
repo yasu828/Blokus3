@@ -29,6 +29,7 @@
       group="items"
       @start="dragstart(block)"
       @end="onEnd(block)"
+      v-bind="clonedItemOptions"
     >
       <table>
         <tr v-for="(blockTR, yi) in block.data" :key="yi">
@@ -247,6 +248,9 @@ export default {
       blocks:blocks,
       dragItem: "",
       dragName: "",
+      clonedItemOptions: {
+        group: "items"
+      },
     };
   },
   methods:{
