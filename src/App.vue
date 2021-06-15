@@ -6,7 +6,8 @@
         :key="y"
       >
         <td 
-          class="MainTableCell" 
+          class="MainTableCell"
+          group="items" 
           v-for="(cell, x) in boardRow" 
           :key="x" 
           :class="`is-${cell.code}`" 
@@ -18,7 +19,8 @@
       </tr>
     </table>
 
-    <draggable div
+    <draggable 
+      tag="div"
       v-for="(block, bi) in blocks" 
       :key="bi"
       group="items"
@@ -256,6 +258,7 @@ export default {
     droped(cell){
       switch(this.dragItem){
         case "p1":
+          this.dragName = this.dragItem;
           this.mainBoard[cell.y][cell.x].code = 1
           this.dragItem = "";
         break;
@@ -263,80 +266,102 @@ export default {
           this.dragName = this.dragItem;
           this.mainBoard[cell.y][cell.x].code = 1
           this.mainBoard[cell.y = cell.y + 1][cell.x].code = 1
+          this.dragItem = "";
         break;
         case "p3":
+          this.dragName = this.dragItem;
           this.mainBoard[cell.y][cell.x].code = 1
+          this.mainBoard[cell.y = cell.y + 1][cell.x].code = 1
+          this.mainBoard[cell.y][cell.x + 1].code = 1
           this.dragItem = "";
         break;
         case "p4":
+          this.dragName = this.dragItem;
           this.mainBoard[cell.y][cell.x].code = 1
           this.dragItem = "";
         break;
         case "p5":
+          this.dragName = this.dragItem;
           this.mainBoard[cell.y][cell.x].code = 1
           this.dragItem = "";
         break;
         case "p6":
+          this.dragName = this.dragItem;
           this.mainBoard[cell.y][cell.x].code = 1
           this.dragItem = "";
         break;
         case "p7":
+          this.dragName = this.dragItem;
           this.mainBoard[cell.y][cell.x].code = 1
           this.dragItem = "";
         break;
         case "p8":
+          this.dragName = this.dragItem;
           this.mainBoard[cell.y][cell.x].code = 1
           this.dragItem = "";
         break;
         case "p9":
+          this.dragName = this.dragItem;
           this.mainBoard[cell.y][cell.x].code = 1
           this.dragItem = "";
         break;
         case "p10":
+          this.dragName = this.dragItem;
           this.mainBoard[cell.y][cell.x].code = 1
           this.dragItem = "";
         break;
         case "p11":
+          this.dragName = this.dragItem;
           this.mainBoard[cell.y][cell.x].code = 1
           this.dragItem = "";
         break;
         case "p12":
+          this.dragName = this.dragItem;
           this.mainBoard[cell.y][cell.x].code = 1
           this.dragItem = "";
         break;
         case "p13":
+          this.dragName = this.dragItem;
           this.mainBoard[cell.y][cell.x].code = 1
           this.dragItem = "";
         break;
         case "p14":
+          this.dragName = this.dragItem;
           this.mainBoard[cell.y][cell.x].code = 1
           this.dragItem = "";
         break;
         case "p15":
+          this.dragName = this.dragItem;
           this.mainBoard[cell.y][cell.x].code = 1
           this.dragItem = "";
         break;
         case "p16":
+          this.dragName = this.dragItem;
           this.mainBoard[cell.y][cell.x].code = 1
           this.dragItem = "";
         break;
         case "p17":
+          this.dragName = this.dragItem;
           this.mainBoard[cell.y][cell.x].code = 1
           this.dragItem = "";
         break;
         case "p18":
+          this.dragName = this.dragItem;
           this.mainBoard[cell.y][cell.x].code = 1
           this.dragItem = "";
         break;
         case "p19":
+          this.dragName = this.dragItem;
           this.mainBoard[cell.y][cell.x].code = 1
           this.dragItem = "";
         break;
         case "p20":
+          this.dragName = this.dragItem;
           this.mainBoard[cell.y][cell.x].code = 1
           this.dragItem = "";
         break;
         case "p21":
+          this.dragName = this.dragItem;
           this.mainBoard[cell.y][cell.x].code = 1
           this.dragItem = "";
         break;
@@ -363,8 +388,8 @@ export default {
 }
 
 .blockCell{
-    height: 20px;
-    width: 20px;
+    height: 6px;
+    width: 6px;
 }
 
 .is-2{
