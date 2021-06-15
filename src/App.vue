@@ -401,21 +401,37 @@ export default {
         case "p18":
           this.dragName = this.dragItem;
           this.mainBoard[cell.y][cell.x].code = 1
+          this.mainBoard[cell.y][cell.x = cell.x + 1].code = 1
+          this.mainBoard[cell.y = cell.y + 1][cell.x = cell.x -1].code = 1
+          this.mainBoard[cell.y = cell.y + 1][cell.x].code = 1
+          this.mainBoard[cell.y][cell.x = cell.x + 1].code = 1
           this.dragItem = "";
         break;
         case "p19":
           this.dragName = this.dragItem;
-          this.mainBoard[cell.y][cell.x].code = 1
+          this.mainBoard[cell.y][cell.x = cell.x + 1].code = 1
+          this.mainBoard[cell.y][cell.x = cell.x + 1].code = 1
+          this.mainBoard[cell.y = cell.y + 1][cell.x = cell.x -1].code = 1
+          this.mainBoard[cell.y][cell.x = cell.x -1].code = 1
+          this.mainBoard[cell.y = cell.y + 1][cell.x = cell.x + 1].code = 1
           this.dragItem = "";
         break;
         case "p20":
           this.dragName = this.dragItem;
-          this.mainBoard[cell.y][cell.x].code = 1
+          this.mainBoard[cell.y][cell.x = cell.x + 1].code = 1
+          this.mainBoard[cell.y = cell.y + 1][cell.x].code = 1
+          this.mainBoard[cell.y][cell.x = cell.x + 1].code = 1
+          this.mainBoard[cell.y][cell.x = cell.x - 2].code = 1
+          this.mainBoard[cell.y = cell.y + 1][cell.x = cell.x + 1].code = 1
           this.dragItem = "";
         break;
         case "p21":
           this.dragName = this.dragItem;
           this.mainBoard[cell.y][cell.x].code = 1
+          this.mainBoard[cell.y][cell.x = cell.x + 1].code = 1
+          this.mainBoard[cell.y][cell.x = cell.x + 1].code = 1
+          this.mainBoard[cell.y][cell.x = cell.x + 1].code = 1
+          this.mainBoard[cell.y = cell.y + 1][cell.x = cell.x - 2].code = 1
           this.dragItem = "";
         break;
       }
