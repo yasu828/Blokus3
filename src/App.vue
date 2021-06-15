@@ -73,14 +73,11 @@ export default {
         }
         mainBoard.push(boardRow)
       }
-    const draggable = window['vuedraggable'];
 // ここからvue.js記述
     return{
       components: {
         'draggable': draggable,
       },
-      TD:"TD",
-      message:"",
       mainBoard: mainBoard,
       blocks:blocks
     };
