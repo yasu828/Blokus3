@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <div>
     <table>
       <tr 
         v-for="(boardRow, y) in mainBoard" 
@@ -18,6 +19,8 @@
         </td>
       </tr>
     </table>
+    </div>
+  <div>
 
     <draggable 
       tag="div"
@@ -39,6 +42,7 @@
         </tr>
       </table>
     </draggable>
+  </div>
   </div>
 </template>
 
@@ -278,51 +282,84 @@ export default {
         case "p4":
           this.dragName = this.dragItem;
           this.mainBoard[cell.y][cell.x].code = 1
+          this.mainBoard[cell.y][cell.x = cell.x + 1].code = 1
+          this.mainBoard[cell.y][cell.x = cell.x + 1].code = 1
           this.dragItem = "";
         break;
         case "p5":
           this.dragName = this.dragItem;
           this.mainBoard[cell.y][cell.x].code = 1
+          this.mainBoard[cell.y][cell.x = cell.x + 1].code = 1
+          this.mainBoard[cell.y = cell.y + 1][cell.x].code = 1
+          this.mainBoard[cell.y][cell.x = cell.x - 1].code = 1
           this.dragItem = "";
         break;
         case "p6":
           this.dragName = this.dragItem;
-          this.mainBoard[cell.y][cell.x].code = 1
+          this.mainBoard[cell.y][cell.x = cell.x + 1].code = 1
+          this.mainBoard[cell.y = cell.y + 1][cell.x = cell.x + 1].code = 1
+          this.mainBoard[cell.y][cell.x = cell.x - 1].code = 1
+          this.mainBoard[cell.y][cell.x = cell.x - 1].code = 1
           this.dragItem = "";
         break;
         case "p7":
           this.dragName = this.dragItem;
           this.mainBoard[cell.y][cell.x].code = 1
+          this.mainBoard[cell.y][cell.x = cell.x +1].code = 1
+          this.mainBoard[cell.y][cell.x = cell.x +1].code = 1
+          this.mainBoard[cell.y][cell.x = cell.x +1].code = 1
           this.dragItem = "";
         break;
         case "p8":
           this.dragName = this.dragItem;
           this.mainBoard[cell.y][cell.x].code = 1
+          this.mainBoard[cell.y = cell.y + 1][cell.x].code = 1
+          this.mainBoard[cell.y][cell.x = cell.x + 1].code = 1
+          this.mainBoard[cell.y][cell.x = cell.x + 1].code = 1
           this.dragItem = "";
         break;
         case "p9":
           this.dragName = this.dragItem;
           this.mainBoard[cell.y][cell.x].code = 1
+          this.mainBoard[cell.y = cell.y + 1][cell.x].code = 1
+          this.mainBoard[cell.y][cell.x = cell.x + 1].code = 1
+          this.mainBoard[cell.y = cell.y + 1][cell.x].code = 1
           this.dragItem = "";
         break;
         case "p10":
           this.dragName = this.dragItem;
           this.mainBoard[cell.y][cell.x].code = 1
+          this.mainBoard[cell.y = cell.y + 1][cell.x].code = 1
+          this.mainBoard[cell.y][cell.x = cell.x + 1].code = 1
+          this.mainBoard[cell.y][cell.x = cell.x + 1].code = 1
+          this.mainBoard[cell.y][cell.x = cell.x + 1].code = 1
           this.dragItem = "";
         break;
         case "p11":
           this.dragName = this.dragItem;
           this.mainBoard[cell.y][cell.x].code = 1
+          this.mainBoard[cell.y][cell.x = cell.x + 1].code = 1
+          this.mainBoard[cell.y][cell.x = cell.x + 1].code = 1
+          this.mainBoard[cell.y = cell.y + 1][cell.x = cell.x - 1].code = 1
+          this.mainBoard[cell.y = cell.y + 1][cell.x].code = 1
           this.dragItem = "";
         break;
         case "p12":
           this.dragName = this.dragItem;
           this.mainBoard[cell.y][cell.x].code = 1
+          this.mainBoard[cell.y = cell.y + 1][cell.x].code = 1
+          this.mainBoard[cell.y = cell.y + 1][cell.x].code = 1
+          this.mainBoard[cell.y][cell.x = cell.x + 1].code = 1
+          this.mainBoard[cell.y][cell.x = cell.x + 1].code = 1
           this.dragItem = "";
         break;
         case "p13":
           this.dragName = this.dragItem;
           this.mainBoard[cell.y][cell.x].code = 1
+          this.mainBoard[cell.y = cell.y + 1][cell.x].code = 1
+          this.mainBoard[cell.y][cell.x = cell.x + 1].code = 1
+          this.mainBoard[cell.y = cell.y + 1][cell.x].code = 1
+          this.mainBoard[cell.y = cell.y + 1][cell.x].code = 1
           this.dragItem = "";
         break;
         case "p14":
@@ -379,6 +416,7 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+  display: flex;
 }
 
 .MainTableCell{
