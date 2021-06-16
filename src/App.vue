@@ -260,7 +260,6 @@ export default {
     onEnd(block){
       block.name = this.dragName;
     },
-          this.mainBoard[cell.y][cell.x = cell.x + 1].code = 1
     droped(x, y){
       for (let i = 0; i < 5; i++) {
         for (let j = 0; j < 5; j++) {
