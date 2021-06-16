@@ -14,7 +14,7 @@
           :class="`is-${cell.code}`" 
           @dragover.prevent
           @dragenter.prevent
-          @drop="droped(cell)"
+          @drop="droped(x, y)"
         >
         </td>
       </tr>
@@ -29,7 +29,6 @@
       group="items"
       @start="dragstart(block)"
       @end="onEnd(block)"
-      v-bind="clonedItemOptions"
     >
       <table>
         <tr v-for="(blockTR, yi) in block.data" :key="yi">
@@ -44,6 +43,8 @@
       </table>
     </draggable>
   </div>
+  <div>{{dragItem}}あ</div><div>{{dragName}}い</div>
+
   </div>
 </template>
 
@@ -248,196 +249,24 @@ export default {
       blocks:blocks,
       dragItem: "",
       dragName: "",
-      clonedItemOptions: {
-        group: "items"
-      },
+      item: "",
     };
   },
   methods:{
-    beforeMove: function(evt) {
-      return evt.draggedContext.element.name !== 'fild';
-    },
     dragstart(block){
       this.dragItem = block.name;
+      this.item = this.blocks.find(x=>x.name==this.dragItem).data;
     },
     onEnd(block){
       block.name = this.dragName;
     },
-    droped(cell){
-      switch(this.dragItem){
-        case "p1":
-          this.dragName = this.dragItem;
-          this.mainBoard[cell.y][cell.x].code = 1
-          this.dragItem = "";
-        break;
-        case "p2":
-          this.dragName = this.dragItem;
-          this.mainBoard[cell.y][cell.x].code = 1
-          this.mainBoard[cell.y = cell.y + 1][cell.x].code = 1
-          this.dragItem = "";
-        break;
-        case "p3":
-          this.dragName = this.dragItem;
-          this.mainBoard[cell.y][cell.x].code = 1
-          this.mainBoard[cell.y = cell.y + 1][cell.x].code = 1
-          this.mainBoard[cell.y][cell.x + 1].code = 1
-          this.dragItem = "";
-        break;
-        case "p4":
-          this.dragName = this.dragItem;
-          this.mainBoard[cell.y][cell.x].code = 1
-          this.mainBoard[cell.y][cell.x = cell.x + 1].code = 1
-          this.mainBoard[cell.y][cell.x = cell.x + 1].code = 1
-          this.dragItem = "";
-        break;
-        case "p5":
-          this.dragName = this.dragItem;
-          this.mainBoard[cell.y][cell.x].code = 1
-          this.mainBoard[cell.y][cell.x = cell.x + 1].code = 1
-          this.mainBoard[cell.y = cell.y + 1][cell.x].code = 1
-          this.mainBoard[cell.y][cell.x = cell.x - 1].code = 1
-          this.dragItem = "";
-        break;
-        case "p6":
-          this.dragName = this.dragItem;
-          this.mainBoard[cell.y][cell.x = cell.x + 1].code = 1
-          this.mainBoard[cell.y = cell.y + 1][cell.x = cell.x + 1].code = 1
-          this.mainBoard[cell.y][cell.x = cell.x - 1].code = 1
-          this.mainBoard[cell.y][cell.x = cell.x - 1].code = 1
-          this.dragItem = "";
-        break;
-        case "p7":
-          this.dragName = this.dragItem;
-          this.mainBoard[cell.y][cell.x].code = 1
-          this.mainBoard[cell.y][cell.x = cell.x +1].code = 1
-          this.mainBoard[cell.y][cell.x = cell.x +1].code = 1
-          this.mainBoard[cell.y][cell.x = cell.x +1].code = 1
-          this.dragItem = "";
-        break;
-        case "p8":
-          this.dragName = this.dragItem;
-          this.mainBoard[cell.y][cell.x].code = 1
-          this.mainBoard[cell.y = cell.y + 1][cell.x].code = 1
-          this.mainBoard[cell.y][cell.x = cell.x + 1].code = 1
-          this.mainBoard[cell.y][cell.x = cell.x + 1].code = 1
-          this.dragItem = "";
-        break;
-        case "p9":
-          this.dragName = this.dragItem;
-          this.mainBoard[cell.y][cell.x].code = 1
-          this.mainBoard[cell.y = cell.y + 1][cell.x].code = 1
-          this.mainBoard[cell.y][cell.x = cell.x + 1].code = 1
-          this.mainBoard[cell.y = cell.y + 1][cell.x].code = 1
-          this.dragItem = "";
-        break;
-        case "p10":
-          this.dragName = this.dragItem;
-          this.mainBoard[cell.y][cell.x].code = 1
-          this.mainBoard[cell.y = cell.y + 1][cell.x].code = 1
-          this.mainBoard[cell.y][cell.x = cell.x + 1].code = 1
-          this.mainBoard[cell.y][cell.x = cell.x + 1].code = 1
-          this.mainBoard[cell.y][cell.x = cell.x + 1].code = 1
-          this.dragItem = "";
-        break;
-        case "p11":
-          this.dragName = this.dragItem;
-          this.mainBoard[cell.y][cell.x].code = 1
-          this.mainBoard[cell.y][cell.x = cell.x + 1].code = 1
-          this.mainBoard[cell.y][cell.x = cell.x + 1].code = 1
-          this.mainBoard[cell.y = cell.y + 1][cell.x = cell.x - 1].code = 1
-          this.mainBoard[cell.y = cell.y + 1][cell.x].code = 1
-          this.dragItem = "";
-        break;
-        case "p12":
-          this.dragName = this.dragItem;
-          this.mainBoard[cell.y][cell.x].code = 1
-          this.mainBoard[cell.y = cell.y + 1][cell.x].code = 1
-          this.mainBoard[cell.y = cell.y + 1][cell.x].code = 1
-          this.mainBoard[cell.y][cell.x = cell.x + 1].code = 1
-          this.mainBoard[cell.y][cell.x = cell.x + 1].code = 1
-          this.dragItem = "";
-        break;
-        case "p13":
-          this.dragName = this.dragItem;
-          this.mainBoard[cell.y][cell.x].code = 1
-          this.mainBoard[cell.y = cell.y + 1][cell.x].code = 1
-          this.mainBoard[cell.y][cell.x = cell.x + 1].code = 1
-          this.mainBoard[cell.y = cell.y + 1][cell.x].code = 1
-          this.mainBoard[cell.y = cell.y + 1][cell.x].code = 1
-          this.dragItem = "";
-        break;
-        case "p14":
-          this.dragName = this.dragItem;
-          this.mainBoard[cell.y][cell.x].code = 1
-          this.mainBoard[cell.y = cell.y + 1][cell.x].code = 1
-          this.mainBoard[cell.y][cell.x = cell.x + 1].code = 1
-          this.mainBoard[cell.y][cell.x = cell.x + 1].code = 1
-          this.mainBoard[cell.y = cell.y + 1][cell.x].code = 1
-          this.dragItem = "";
-        break;
-        case "p15":
-          this.dragName = this.dragItem;
-          this.mainBoard[cell.y][cell.x].code = 1
-          this.mainBoard[cell.y][cell.x = cell.x + 1].code = 1
-          this.mainBoard[cell.y][cell.x = cell.x + 1].code = 1
-          this.mainBoard[cell.y][cell.x = cell.x + 1].code = 1
-          this.mainBoard[cell.y][cell.x = cell.x + 1].code = 1
-          this.dragItem = "";
-        break;
-        case "p16":
-          this.dragName = this.dragItem;
-          this.mainBoard[cell.y][cell.x].code = 1
-          this.mainBoard[cell.y = cell.y + 1][cell.x].code = 1
-          this.mainBoard[cell.y = cell.y + 1][cell.x].code = 1
-          this.mainBoard[cell.y][cell.x = cell.x + 1].code = 1
-          this.mainBoard[cell.y = cell.y - 1][cell.x].code = 1
-          this.dragItem = "";
-        break;
-        case "p17":
-          this.dragName = this.dragItem;
-          this.mainBoard[cell.y][cell.x].code = 1
-          this.mainBoard[cell.y = cell.y + 1][cell.x].code = 1
-          this.mainBoard[cell.y][cell.x = cell.x + 1].code = 1
-          this.mainBoard[cell.y = cell.y + 1][cell.x].code = 1
-          this.mainBoard[cell.y][cell.x = cell.x + 1].code = 1
-          this.dragItem = "";
-        break;
-        case "p18":
-          this.dragName = this.dragItem;
-          this.mainBoard[cell.y][cell.x].code = 1
-          this.mainBoard[cell.y][cell.x = cell.x + 1].code = 1
-          this.mainBoard[cell.y = cell.y + 1][cell.x = cell.x -1].code = 1
-          this.mainBoard[cell.y = cell.y + 1][cell.x].code = 1
-          this.mainBoard[cell.y][cell.x = cell.x + 1].code = 1
-          this.dragItem = "";
-        break;
-        case "p19":
-          this.dragName = this.dragItem;
-          this.mainBoard[cell.y][cell.x = cell.x + 1].code = 1
-          this.mainBoard[cell.y][cell.x = cell.x + 1].code = 1
-          this.mainBoard[cell.y = cell.y + 1][cell.x = cell.x -1].code = 1
-          this.mainBoard[cell.y][cell.x = cell.x -1].code = 1
-          this.mainBoard[cell.y = cell.y + 1][cell.x = cell.x + 1].code = 1
-          this.dragItem = "";
-        break;
-        case "p20":
-          this.dragName = this.dragItem;
-          this.mainBoard[cell.y][cell.x = cell.x + 1].code = 1
-          this.mainBoard[cell.y = cell.y + 1][cell.x].code = 1
-          this.mainBoard[cell.y][cell.x = cell.x + 1].code = 1
-          this.mainBoard[cell.y][cell.x = cell.x - 2].code = 1
-          this.mainBoard[cell.y = cell.y + 1][cell.x = cell.x + 1].code = 1
-          this.dragItem = "";
-        break;
-        case "p21":
-          this.dragName = this.dragItem;
-          this.mainBoard[cell.y][cell.x].code = 1
-          this.mainBoard[cell.y][cell.x = cell.x + 1].code = 1
-          this.mainBoard[cell.y][cell.x = cell.x + 1].code = 1
-          this.mainBoard[cell.y][cell.x = cell.x + 1].code = 1
-          this.mainBoard[cell.y = cell.y + 1][cell.x = cell.x - 2].code = 1
-          this.dragItem = "";
-        break;
+    droped(x, y){
+      for (let i = 0; i < 5; i++) {
+        for (let j = 0; j < 5; j++) {
+          if (this.item[i][j].code==1) {
+            this.mainBoard[y + i][x + j].code = this.item[i][j].code
+          }
+        }
       }
     },
   }
