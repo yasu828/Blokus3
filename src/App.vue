@@ -25,7 +25,7 @@
 
     <!-- 選んだブロックの表示 -->
     <div class="chooseblocks">
-      <table>
+      <draggable tag="table">
         <tr 
           v-for="(chooseBlockRow, vi) in chooseBlock"
           :key="vi">
@@ -36,19 +36,18 @@
             :class="`is-${chooseBlockCell.code}`">
           </td>
         </tr>
-      </table>
+      </draggable>
       <button @click="counter += 1">Add 1</button>
       <p>The button above has been clicked {{ counter }} times.</p>
     </div>
     <!--// 選んだブロックの表示 -->
     <!-- 手持ちのブロック -->
     <div class="haveBlock">
-      <draggable 
-        tag="div"
+      <div
         v-for="(block, bi) in blocks" 
         :key="bi"
         group="items"
-        @start="dragstart(block)"
+        @click="dstart(block)"
       >
         <table>
           <tr v-for="(blockTR, yi) in block.data" :key="yi">
@@ -61,7 +60,7 @@
             </td>
           </tr>
         </table>
-      </draggable>
+      </div>
     </div>
     <!-- // 手持ちのブロック -->
   </div>
@@ -285,7 +284,7 @@ export default {
     };
   },
   methods:{
-    dragstart(block){
+    dstart(block){
       this.dragItem = block.name;
       this.item = this.blocks.find(x=>x.name==block.name).data;
       console.log(this.chooseBlock)
