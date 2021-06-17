@@ -43,8 +43,6 @@
       </table>
     </draggable>
   </div>
-  <div>{{dragItem}}あ</div><div>{{dragName}}い</div>
-
   </div>
 </template>
 

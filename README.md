@@ -1,25 +1,17 @@
-# blokus3
+## 実装できた機能
+- ブロックをおく盤面の作成
+- 各々の形のブロックの作成
+- 所持したブロックを盤面にドラッグ&ドロップ
 
-## Project setup
-```
-npm install
-```
+## これから実装する機能
+- ブロックを4人分作成
+- 選択したブロックを回転、反転させる
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
-# Blokus3
+## 徐々につけていきたい機能
+ゲームルールを追加する
+- ブロックの辺が重なる場所にはおけないようにする
+- すでにブロックのある場所にもおけないようにする
+-
+- おける場所のなくなったプレイヤーのpath機能
+- プレイヤーごとにオンラインで対戦できるようにする
+- 最終プレイヤーがpathを選択時ゲーム終了し勝敗を調査する。
