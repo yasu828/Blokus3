@@ -37,8 +37,7 @@
           </td>
         </tr>
       </draggable>
-      <button @click="counter += 1">Add 1</button>
-      <p>The button above has been clicked {{ counter }} times.</p>
+      <button @click="turnLeft()">left</button>
     </div>
     <!--// 選んだブロックの表示 -->
     <!-- 手持ちのブロック -->
@@ -280,10 +279,12 @@ export default {
       dragItem: "",
       item: "",
       chooseBlock: chooseBlock,
-      counter: 0,
     };
   },
   methods:{
+    turnLeft(){
+      console.log("Gg");
+    },
     dstart(block){
       this.dragItem = block.name;
       this.item = this.blocks.find(x=>x.name==block.name).data;
