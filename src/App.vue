@@ -1,48 +1,52 @@
 <template>
   <div id="app">
     <div>
-    <table>
-      <tr 
-        v-for="(boardRow, y) in mainBoard" 
-        :key="y"
-      >
-        <td 
-          class="MainTableCell"
-          group="items" 
-          v-for="(cell, x) in boardRow" 
-          :key="x" 
-          :class="`is-${cell.code}`" 
-          @dragover.prevent
-          @dragenter.prevent
-          @drop="droped(x, y)"
-        >
-        </td>
-      </tr>
-    </table>
-    </div>
-
-  <div class="haveBlock">
-    <draggable 
-      tag="div"
-      v-for="(block, bi) in blocks" 
-      :key="bi"
-      group="items"
-      @start="dragstart(block)"
-      @end="onEnd(block)"
-    >
       <table>
-        <tr v-for="(blockTR, yi) in block.data" :key="yi">
+        <tr 
+          v-for="(boardRow, y) in mainBoard" 
+          :key="y"
+        >
           <td 
-            class="blockCell"
-            v-for="(blockTD, xi) in blockTR" 
-            :key="xi"
-            :class="`is-${blockTD.code}`"
+            class="MainTableCell"
+            group="items" 
+            v-for="(cell, x) in boardRow" 
+            :key="x" 
+            :class="`is-${cell.code}`" 
+            @dragover.prevent
+            @dragenter.prevent
+            @drop="droped(x, y)"
           >
           </td>
         </tr>
       </table>
-    </draggable>
-  </div>
+    </div>
+
+    <div class="chooseblock">
+      {{ chooseBlock }}
+    </div>
+
+    <div class="haveBlock">
+      <draggable 
+        tag="div"
+        v-for="(block, bi) in blocks" 
+        :key="bi"
+        group="items"
+        @start="dragstart(block)"
+        @end="onEnd(block)"
+      >
+        <table>
+          <tr v-for="(blockTR, yi) in block.data" :key="yi">
+            <td 
+              class="blockCell"
+              v-for="(blockTD, xi) in blockTR" 
+              :key="xi"
+              :class="`is-${blockTD.code}`"
+            >
+            </td>
+          </tr>
+        </table>
+      </draggable>
+    </div>
   </div>
 </template>
 
@@ -248,6 +252,7 @@ export default {
       dragItem: "",
       dragName: "",
       item: "",
+      chooseBlock: "選んで",
     };
   },
   methods:{
@@ -305,5 +310,11 @@ export default {
   width: 150px;
   display: flex;
   flex-wrap: wrap;
+}
+
+.chooseblock{
+  height: 120px;
+  width: 120px;
+  background-color: beige;
 }
 </style>
