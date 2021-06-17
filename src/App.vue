@@ -21,8 +21,19 @@
       </table>
     </div>
 
-    <div class="chooseblock">
-      {{ chooseBlock }}
+    <div class="chooseblocks">
+      <table>
+        <tr 
+          v-for="(chooseBlockRow, vi) in chooseBlock"
+          :key="vi">
+          <td 
+            class="blockCell2"
+            v-for="(chooseBlockCell, mi) in chooseBlockRow" 
+            :key="mi"
+            :class="`is-${chooseBlockCell.code}`">
+          </td>
+        </tr>
+      </table>
     </div>
 
     <div class="haveBlock">
@@ -32,7 +43,6 @@
         :key="bi"
         group="items"
         @start="dragstart(block)"
-        @end="onEnd(block)"
       >
         <table>
           <tr v-for="(blockTR, yi) in block.data" :key="yi">
@@ -228,7 +238,7 @@ export default {
           [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
       ]},
     ];
-    const mainBoard = []
+    const mainBoard = [];
       for (let y = 0; y < 20; y++ ) {
         const boardRow = []
         for (let x = 0; x < 20; x++){
@@ -236,11 +246,24 @@ export default {
             y: y,
             x: x,
             code: 0,
-            name: "fild",
           };
           boardRow.push(cell)
         }
         mainBoard.push(boardRow)
+      }
+    
+    const chooseBlock = [];
+      for (let y = 0; y < 5; y++ ) {
+        const chooseBlockRow = []
+        for (let x = 0; x < 5; x++){
+          const chooseBlockCell = {
+            y: y,
+            x: x,
+            code: 0,
+          };
+        chooseBlockRow.push(chooseBlockCell)
+      }
+      chooseBlock.push(chooseBlockRow)
       }
 // ここからvue.js記述
     return{
@@ -250,18 +273,22 @@ export default {
       mainBoard: mainBoard,
       blocks:blocks,
       dragItem: "",
-      dragName: "",
       item: "",
-      chooseBlock: "選んで",
+      chooseBlock: chooseBlock,
     };
   },
   methods:{
     dragstart(block){
       this.dragItem = block.name;
-      this.item = this.blocks.find(x=>x.name==this.dragItem).data;
-    },
-    onEnd(block){
-      block.name = this.dragName;
+      this.item = this.blocks.find(x=>x.name==block.name).data;
+      console.log(this.chooseBlock)
+      for (let i = 0; i < 5; i++) {
+        for (let j = 0; j < 5; j++) {
+          if (this.item[i][j].code==1) {
+            this.chooseBlock[i][j].code = this.item[i][j].code
+          }
+        }
+      }
     },
     droped(x, y){
       for (let i = 0; i < 5; i++) {
@@ -298,6 +325,11 @@ export default {
     height: 6px;
     width: 6px;
 }
+.blockCell2{
+    height: 16px;
+    width: 16px;
+
+}
 
 .is-2{
     background-color: blueviolet;
@@ -312,7 +344,7 @@ export default {
   flex-wrap: wrap;
 }
 
-.chooseblock{
+.chooseblocks{
   height: 120px;
   width: 120px;
   background-color: beige;
