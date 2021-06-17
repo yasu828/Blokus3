@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <!-- ブロックを配置する基盤 -->
     <div>
       <table>
         <tr 
@@ -20,7 +21,9 @@
         </tr>
       </table>
     </div>
+    <!--// 基盤 -->
 
+    <!-- 選んだブロックの表示 -->
     <div class="chooseblocks">
       <table>
         <tr 
@@ -34,8 +37,11 @@
           </td>
         </tr>
       </table>
+      <button @click="counter += 1">Add 1</button>
+      <p>The button above has been clicked {{ counter }} times.</p>
     </div>
-
+    <!--// 選んだブロックの表示 -->
+    <!-- 手持ちのブロック -->
     <div class="haveBlock">
       <draggable 
         tag="div"
@@ -57,6 +63,7 @@
         </table>
       </draggable>
     </div>
+    <!-- // 手持ちのブロック -->
   </div>
 </template>
 
@@ -250,8 +257,7 @@ export default {
           boardRow.push(cell)
         }
         mainBoard.push(boardRow)
-      }
-    
+      } 
     const chooseBlock = [];
       for (let y = 0; y < 5; y++ ) {
         const chooseBlockRow = []
@@ -275,6 +281,7 @@ export default {
       dragItem: "",
       item: "",
       chooseBlock: chooseBlock,
+      counter: 0,
     };
   },
   methods:{
