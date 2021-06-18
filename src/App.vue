@@ -1,48 +1,70 @@
 <template>
   <div id="app">
+    <!-- ブロックを配置する基盤 -->
     <div>
-    <table>
-      <tr 
-        v-for="(boardRow, y) in mainBoard" 
-        :key="y"
-      >
-        <td 
-          class="MainTableCell"
-          group="items" 
-          v-for="(cell, x) in boardRow" 
-          :key="x" 
-          :class="`is-${cell.code}`" 
-          @dragover.prevent
-          @dragenter.prevent
-          @drop="droped(x, y)"
-        >
-        </td>
-      </tr>
-    </table>
-    </div>
-
-  <div class="haveBlock">
-    <draggable 
-      tag="div"
-      v-for="(block, bi) in blocks" 
-      :key="bi"
-      group="items"
-      @start="dragstart(block)"
-      @end="onEnd(block)"
-    >
       <table>
-        <tr v-for="(blockTR, yi) in block.data" :key="yi">
+        <tr 
+          v-for="(boardRow, y) in mainBoard" 
+          :key="y"
+        >
           <td 
-            class="blockCell"
-            v-for="(blockTD, xi) in blockTR" 
-            :key="xi"
-            :class="`is-${blockTD.code}`"
+            class="MainTableCell"
+            group="items" 
+            v-for="(cell, x) in boardRow" 
+            :key="x" 
+            :class="`is-${cell.code}`" 
+            @dragover.prevent
+            @dragenter.prevent
+            @drop="droped(x, y)"
           >
           </td>
         </tr>
       </table>
-    </draggable>
-  </div>
+    </div>
+    <!--// 基盤 -->
+
+    <!-- 選んだブロックの表示 -->
+    <div class="chooseblocks">
+      <draggable tag="table">
+        <tr 
+          v-for="(chooseBlockRow, vi) in chooseBlock"
+          :key="vi">
+          <td 
+            class="blockCell2"
+            v-for="(chooseBlockCell, mi) in chooseBlockRow" 
+            :key="mi"
+            :class="`is-${chooseBlockCell.code}`">
+          </td>
+        </tr>
+      </draggable>
+      <button @click.prevent @click="turnLeft()">左に回転
+      </button>
+      <button @click.prevent @click="turnRight()">右に回転
+      </button>
+    </div>
+    <!--// 選んだブロックの表示 -->
+    <!-- 手持ちのブロック -->
+    <div class="handBlock">
+      <div
+        v-for="(block, bi) in blocks" 
+        :key="bi"
+        group="items"
+        @click="handClick(block)"
+      >
+        <table>
+          <tr v-for="(blockTR, yi) in block.data" :key="yi">
+            <td 
+              class="blockCell"
+              v-for="(blockTD, xi) in blockTR" 
+              :key="xi"
+              :class="`is-${blockTD.code}`"
+            >
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <!-- // 手持ちのブロック -->
   </div>
 </template>
 
@@ -55,7 +77,7 @@ export default {
   name: 'App',
   data (){
     const blocks = [
-      { name:"p1",
+      { name:0,
         data:[
           [{code:1}, {code:0}, {code:0}, {code:0}, {code:0}],
           [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
@@ -63,7 +85,7 @@ export default {
           [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
           [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
       ]},
-      { name:"p2",
+      { name:1,
         data:[
           [{code:1}, {code:0}, {code:0}, {code:0}, {code:0}],
           [{code:1}, {code:0}, {code:0}, {code:0}, {code:0}],
@@ -71,7 +93,7 @@ export default {
           [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
           [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
       ]},
-      { name:"p3",
+      { name:2,
         data:[
           [{code:1}, {code:0}, {code:0}, {code:0}, {code:0}],
           [{code:1}, {code:1}, {code:0}, {code:0}, {code:0}],
@@ -79,7 +101,7 @@ export default {
           [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
           [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
       ]},
-      { name:"p4",
+      { name:3,
         data:[
           [{code:1}, {code:1}, {code:1}, {code:0}, {code:0}],
           [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
@@ -87,7 +109,7 @@ export default {
           [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
           [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
       ]},
-      { name:"p5",
+      { name:4,
         data:[
           [{code:1}, {code:1}, {code:0}, {code:0}, {code:0}],
           [{code:1}, {code:1}, {code:0}, {code:0}, {code:0}],
@@ -95,7 +117,7 @@ export default {
           [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
           [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
       ]},
-      { name:"p6",
+      { name:5,
         data:[
           [{code:0}, {code:1}, {code:0}, {code:0}, {code:0}],
           [{code:1}, {code:1}, {code:1}, {code:0}, {code:0}],
@@ -103,7 +125,7 @@ export default {
           [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
           [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
       ]},
-      { name:"p7",
+      { name:6,
         data:[
           [{code:1}, {code:1}, {code:1}, {code:1}, {code:0}],
           [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
@@ -111,7 +133,7 @@ export default {
           [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
           [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
       ]},
-      { name:"p8",
+      { name:7,
         data:[
           [{code:1}, {code:0}, {code:0}, {code:0}, {code:0}],
           [{code:1}, {code:1}, {code:1}, {code:0}, {code:0}],
@@ -119,7 +141,7 @@ export default {
           [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
           [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
       ]},
-      { name:"p9",
+      { name:8,
         data:[
           [{code:1}, {code:0}, {code:0}, {code:0}, {code:0}],
           [{code:1}, {code:1}, {code:0}, {code:0}, {code:0}],
@@ -127,7 +149,7 @@ export default {
           [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
           [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
       ]},
-      { name:"p10",
+      { name:9,
         data:[
           [{code:1}, {code:0}, {code:0}, {code:0}, {code:0}],
           [{code:1}, {code:1}, {code:1}, {code:1}, {code:0}],
@@ -135,7 +157,7 @@ export default {
           [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
           [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
       ]},
-      { name:"p11",
+      { name:10,
         data:[
           [{code:1}, {code:1}, {code:1}, {code:0}, {code:0}],
           [{code:0}, {code:1}, {code:0}, {code:0}, {code:0}],
@@ -143,7 +165,7 @@ export default {
           [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
           [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
       ]},
-      { name:"p12",
+      { name:11,
         data:[
           [{code:1}, {code:0}, {code:0}, {code:0}, {code:0}],
           [{code:1}, {code:0}, {code:0}, {code:0}, {code:0}],
@@ -151,7 +173,7 @@ export default {
           [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
           [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
       ]},
-      { name:"p13",
+      { name:12,
         data:[
           [{code:1}, {code:0}, {code:0}, {code:0}, {code:0}],
           [{code:1}, {code:1}, {code:0}, {code:0}, {code:0}],
@@ -159,7 +181,7 @@ export default {
           [{code:0}, {code:1}, {code:0}, {code:0}, {code:0}],
           [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
       ]},
-      { name:"p14",
+      { name:13,
         data:[
           [{code:1}, {code:0}, {code:0}, {code:0}, {code:0}],
           [{code:1}, {code:1}, {code:1}, {code:0}, {code:0}],
@@ -167,7 +189,7 @@ export default {
           [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
           [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
       ]},
-      { name:"p15",
+      { name:14,
         data:[
           [{code:1}, {code:1}, {code:1}, {code:1}, {code:1}],
           [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
@@ -175,7 +197,7 @@ export default {
           [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
           [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
       ]},
-      { name:"p16",
+      { name:15,
         data:[
           [{code:1}, {code:0}, {code:0}, {code:0}, {code:0}],
           [{code:1}, {code:1}, {code:0}, {code:0}, {code:0}],
@@ -183,7 +205,7 @@ export default {
           [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
           [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
       ]},
-      { name:"p17",
+      { name:16,
         data:[
           [{code:1}, {code:0}, {code:0}, {code:0}, {code:0}],
           [{code:1}, {code:1}, {code:0}, {code:0}, {code:0}],
@@ -191,7 +213,7 @@ export default {
           [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
           [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
       ]},
-      { name:"p18",
+      { name:17,
         data:[
           [{code:1}, {code:1}, {code:0}, {code:0}, {code:0}],
           [{code:1}, {code:0}, {code:0}, {code:0}, {code:0}],
@@ -199,7 +221,7 @@ export default {
           [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
           [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
       ]},
-      { name:"p19",
+      { name:18,
         data:[
           [{code:0}, {code:1}, {code:1}, {code:0}, {code:0}],
           [{code:1}, {code:1}, {code:0}, {code:0}, {code:0}],
@@ -207,7 +229,7 @@ export default {
           [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
           [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
       ]},
-      { name:"p20",
+      { name:19,
         data:[
           [{code:0}, {code:1}, {code:0}, {code:0}, {code:0}],
           [{code:1}, {code:1}, {code:1}, {code:0}, {code:0}],
@@ -215,7 +237,7 @@ export default {
           [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
           [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
       ]},
-      { name:"p21",
+      { name:20,
         data:[
           [{code:1}, {code:1}, {code:1}, {code:1}, {code:0}],
           [{code:0}, {code:1}, {code:0}, {code:0}, {code:0}],
@@ -223,8 +245,16 @@ export default {
           [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
           [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
       ]},
+      { name:21,
+        data:[
+          [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
+          [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
+          [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
+          [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
+          [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
+      ]},
     ];
-    const mainBoard = []
+    const mainBoard = [];
       for (let y = 0; y < 20; y++ ) {
         const boardRow = []
         for (let x = 0; x < 20; x++){
@@ -232,11 +262,23 @@ export default {
             y: y,
             x: x,
             code: 0,
-            name: "fild",
           };
           boardRow.push(cell)
         }
         mainBoard.push(boardRow)
+      } 
+    const chooseBlock = [];
+      for (let y = 0; y < 5; y++ ) {
+        const chooseBlockRow = []
+        for (let x = 0; x < 5; x++){
+          const chooseBlockCell = {
+            y: y,
+            x: x,
+            code: 0,
+          };
+        chooseBlockRow.push(chooseBlockCell)
+      }
+      chooseBlock.push(chooseBlockRow)
       }
 // ここからvue.js記述
     return{
@@ -246,17 +288,36 @@ export default {
       mainBoard: mainBoard,
       blocks:blocks,
       dragItem: "",
-      dragName: "",
-      item: "",
+      item: [],
+      haveItem: [],
+      chooseBlock: blocks[21].data,
     };
   },
   methods:{
-    dragstart(block){
-      this.dragItem = block.name;
-      this.item = this.blocks.find(x=>x.name==this.dragItem).data;
+    turnLeft(){
+      this.haveItem = JSON.parse(JSON.stringify(this.chooseBlock))
+      for (let i = 0; i < 5; i++) {
+        for (let j = 0; j < 5; j++) {
+          this.chooseBlock[4 - i][j].code = this.haveItem[j][i].code
+        }
+      }
     },
-    onEnd(block){
-      block.name = this.dragName;
+    turnRight(){
+      this.haveItem = JSON.parse(JSON.stringify(this.chooseBlock))
+      for (let i = 0; i < 5; i++) {
+        for (let j = 0; j < 5; j++) {
+          this.chooseBlock[i][4 - j].code = this.haveItem[j][i].code
+        }
+      }
+    },
+    handClick(block){
+      this.dragItem = block.name;
+      this.item = this.blocks.find(x=>x.name==block.name).data;
+      for (let i = 0; i < 5; i++) {
+        for (let j = 0; j < 5; j++) {
+          this.chooseBlock[i][j].code = this.item[i][j].code
+        }
+      }
     },
     droped(x, y){
       for (let i = 0; i < 5; i++) {
@@ -293,6 +354,11 @@ export default {
     height: 6px;
     width: 6px;
 }
+.blockCell2{
+    height: 16px;
+    width: 16px;
+
+}
 
 .is-2{
     background-color: blueviolet;
@@ -305,5 +371,11 @@ export default {
   width: 150px;
   display: flex;
   flex-wrap: wrap;
+}
+
+.chooseblocks{
+  height: 120px;
+  width: 120px;
+  background-color: beige;
 }
 </style>
