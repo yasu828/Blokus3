@@ -37,9 +37,9 @@
           </td>
         </tr>
       </draggable>
-      <button @click.prevent @click="turnLeft()">左に1回転
+      <button @click.prevent @click="turnLeft()">左に回転
       </button>
-      <button @click.prevent @click="tnRight()">回す
+      <button @click.prevent @click="turnRight()">右に回転
       </button>
     </div>
     <!--// 選んだブロックの表示 -->
@@ -302,25 +302,13 @@ export default {
         }
       }
     },
-    // turnRight(){
-    //   function transpose(a) {
-    //     return a[0].map((_, c) => a.map(r => r[c]));
-    //   }
-    //   this.haveItem = this.blocks[this.dragItem].data
-    //   const c = transpose(this.haveItem);
-    //   for (let i = 0; i < 5; i++) {
-    //     for (let j = 0; j < 5; j++) {
-    //       this.chooseBlock[i][j].code = c[i][j].code
-    //     }
-    //   }
-    // },
-    tnRight(){
-      this.haveItem = this.blocks[this.dragItem].data
-      for (let j = 0; j < 5; j++) {
-        for (let i = 0; i < 5; i++) { 
-          this.chooseBlock[j][i].code = this.haveItem[4 - i][j].code;
+    turnRight(){
+      this.haveItem = JSON.parse(JSON.stringify(this.chooseBlock))
+      for (let i = 0; i < 5; i++) {
+        for (let j = 0; j < 5; j++) {
+          this.chooseBlock[i][4 - j].code = this.haveItem[j][i].code
         }
-      }  
+      }
     },
     handClick(block){
       this.dragItem = block.name;
