@@ -245,6 +245,14 @@ export default {
           [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
           [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
       ]},
+      { name:21,
+        data:[
+          [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
+          [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
+          [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
+          [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
+          [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
+      ]},
     ];
     const mainBoard = [];
       for (let y = 0; y < 20; y++ ) {
@@ -281,14 +289,13 @@ export default {
       blocks:blocks,
       dragItem: "",
       item: [],
-      haveItem: "",
-      chooseBlock: chooseBlock,
+      haveItem: [],
+      chooseBlock: blocks[21].data,
     };
   },
   methods:{
     turnLeft(){
-      console.log(this.blocks[this.dragItem].data)
-      this.haveItem = this.blocks[this.dragItem].data
+      this.haveItem = JSON.parse(JSON.stringify(this.chooseBlock))
       for (let i = 0; i < 5; i++) {
         for (let j = 0; j < 5; j++) {
           this.chooseBlock[4 - i][j].code = this.haveItem[j][i].code
