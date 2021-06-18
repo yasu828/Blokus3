@@ -41,6 +41,8 @@
       </button>
       <button @click.prevent @click="turnRight()">右に回転
       </button>
+      <button @click.prevent @click="Inversion()">反転
+      </button>
     </div>
     <!--// 選んだブロックの表示 -->
     <!-- 手持ちのブロック -->
@@ -307,6 +309,14 @@ export default {
       for (let i = 0; i < 5; i++) {
         for (let j = 0; j < 5; j++) {
           this.chooseBlock[i][4 - j].code = this.haveItem[j][i].code
+        }
+      }
+    },
+    Inversion(){
+      this.haveItem = JSON.parse(JSON.stringify(this.chooseBlock))
+      for (let i = 0; i < 5; i++) {
+        for (let j = 0; j < 5; j++) {
+          this.chooseBlock[i][j].code = this.haveItem[j][i].code
         }
       }
     },
