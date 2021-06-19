@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <!-- ブロックを配置する基盤 -->
-    <div>
+    <div class="table">
       <table>
         <tr 
           v-for="(boardRow, y) in mainBoard" 
@@ -22,51 +22,52 @@
       </table>
     </div>
     <!--// 基盤 -->
-
-    <!-- 選んだブロックの表示 -->
-    <div class="chooseblocks">
-      <draggable tag="table">
-        <tr 
-          v-for="(chooseBlockRow, vi) in chooseBlock"
-          :key="vi">
-          <td 
-            class="blockCell2"
-            v-for="(chooseBlockCell, mi) in chooseBlockRow" 
-            :key="mi"
-            :class="`is-${chooseBlockCell.code}`">
-          </td>
-        </tr>
-      </draggable>
-      <button @click.prevent @click="turnLeft()">左に回転
-      </button>
-      <button @click.prevent @click="turnRight()">右に回転
-      </button>
-      <button @click.prevent @click="Inversion()">反転
-      </button>
-    </div>
-    <!--// 選んだブロックの表示 -->
+    <div class="player1">
     <!-- 手持ちのブロック -->
-    <div class="handBlock">
-      <div
-        v-for="(block, bi) in blocks" 
-        :key="bi"
-        group="items"
-        @click="handClick(block)"
-      >
-        <table>
-          <tr v-for="(blockTR, yi) in block.data" :key="yi">
+      <div class="handBlock">
+        <div 
+          v-for="(block, bi) in blocks" 
+          :key="bi" 
+          group="items" 
+          @click="handClick(block)"
+        >
+          <table>
+            <tr v-for="(blockTR, yi) in block.data" :key="yi">
+              <td 
+                class="blockCell" 
+                v-for="(blockTD, xi) in blockTR" 
+                :key="xi" 
+                :class="`is-${blockTD.code}`"
+              >
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <!-- // 手持ちのブロック -->
+      <!-- 選んだブロックの表示 -->
+      <div class="chooseblocks">
+        <draggable tag="table">
+          <tr 
+            v-for="(chooseBlockRow, vi) in chooseBlock"
+            :key="vi">
             <td 
-              class="blockCell"
-              v-for="(blockTD, xi) in blockTR" 
-              :key="xi"
-              :class="`is-${blockTD.code}`"
-            >
+              class="blockCell2"
+              v-for="(chooseBlockCell, mi) in chooseBlockRow" 
+              :key="mi"
+              :class="`is-${chooseBlockCell.code}`">
             </td>
           </tr>
-        </table>
+        </draggable>
+        <button @click.prevent @click="turnLeft()">左に回転
+        </button>
+        <button @click.prevent @click="turnRight()">右に回転
+        </button>
+        <button @click.prevent @click="Inversion()">反転
+        </button>
       </div>
+    <!--// 選んだブロックの表示 -->
     </div>
-    <!-- // 手持ちのブロック -->
   </div>
 </template>
 
@@ -350,8 +351,23 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
-  display: flex;
+  display: grid;
   height: 600px;
+  grid-template: 
+  "... ... ... ... ..." 1fr
+  "p1 main main main ..." 1fr
+  "... main main main ..." 1fr
+  "... main main main ..." 1fr
+  "... ... ... ... ..." 1fr
+  /1fr 1fr 1fr 1fr 1fr;
+}
+
+.table{
+  grid-area: main;
+}
+.player1{
+  grid-area: p1;
+  display: flex;
 }
 
 .MainTableCell{
@@ -376,9 +392,9 @@ export default {
 .is-1{
     background-color: rgb(43, 144, 226);
 }
-.haveBlock{
-  height: 500px;
-  width: 150px;
+.handBlock{
+  height: 200px;
+  width: 330px;
   display: flex;
   flex-wrap: wrap;
 }
