@@ -2,6 +2,7 @@
   <div class="hello">
     <!-- <h1>{{ msg }}</h1> -->
     <h3>{{ messe }}</h3>
+    <h3>{{ username }}</h3>
   </div>
 </template>
 
@@ -12,12 +13,10 @@ export default {
       name: 'HelloWorld',
       messe: "おはよう！！"
     }
-  }
-  
-  // props: {
-  //   msg: String
-  // }
-  
+  },
+  props: {
+    username: String
+  },
 }
 </script>
 

@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <HelloWorld></HelloWorld>
+    <HelloWorld :username='name'></HelloWorld>
     <!-- ブロックを配置する基盤 -->
     <div class="table">
       <table>
@@ -426,6 +426,7 @@ export default {
       item: [],
       haveItem: [],
       chooseBlock: chooseBlock,
+      name:"データを送ります",
     };
   },
   methods:{
