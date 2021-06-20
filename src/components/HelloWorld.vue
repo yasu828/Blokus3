@@ -3,6 +3,7 @@
     <!-- <h1>{{ msg }}</h1> -->
     <h3>{{ messe }}</h3>
     <h3>{{ username }}</h3>
+    <p><button @click="increment">+1</button> {{ count }} </p>
   </div>
 </template>
 
@@ -11,12 +12,19 @@ export default {
   data(){
     return{
       name: 'HelloWorld',
-      messe: "おはよう！！"
+      messe: "おはよう！！",
+      count: 0,
     }
   },
   props: {
     username: String
   },
+  methods: {
+    increment(){
+        this.count += 1;
+        this.$emit("add",this.count);
+    },
+  }
 }
 </script>
 

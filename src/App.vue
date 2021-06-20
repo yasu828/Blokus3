@@ -1,6 +1,8 @@
 <template>
   <div id="app">
-    <HelloWorld :username='name'></HelloWorld>
+    <HelloWorld :username='name' @add="add1"></HelloWorld>
+    <HelloWorld :username='name' @add="add2"></HelloWorld>
+    <p>total : {{ totalcount }} </p>
     <!-- ブロックを配置する基盤 -->
     <div class="table">
       <table>
@@ -427,9 +429,20 @@ export default {
       haveItem: [],
       chooseBlock: chooseBlock,
       name:"データを送ります",
+      count1: 0,
+      count2: 0,
+      totalcount: 0
     };
   },
   methods:{
+    add1(count){
+      this.count1 = count;
+      this.totalcount = this.count1 + this.count2;
+    },
+    add2(count){
+      this.count2 = count;
+      this.totalcount = this.count1 + this.count2;
+    },
     turnLeft(){
       this.haveItem = JSON.parse(JSON.stringify(this.chooseBlock))
       for (let i = 0; i < 5; i++) {
