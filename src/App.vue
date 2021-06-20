@@ -1,6 +1,11 @@
 <template>
   <div id="app">
-    <HelloWorld :username='name' @add="add1"></HelloWorld>
+
+    <HelloWorld :username='name' @add="add1">
+      <template v-slot:message>
+        <p>Let's enjoy programming!</p>
+    </template>
+    </HelloWorld>
     <HelloWorld :username='name' @add="add2"></HelloWorld>
     <p>total : {{ totalcount }} </p>
     <!-- ブロックを配置する基盤 -->

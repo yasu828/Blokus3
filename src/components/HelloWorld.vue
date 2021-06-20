@@ -1,6 +1,7 @@
 <template>
   <div class="hello">
     <!-- <h1>{{ msg }}</h1> -->
+    <slot name="message"></slot>
     <h3>{{ messe }}</h3>
     <h3>{{ username }}</h3>
     <p><button @click="increment">+1</button> {{ count }} </p>
