@@ -6,6 +6,7 @@
     <keep-alive>
       <component :is="componentName"></component>
     </keep-alive>
+    
     <HelloWorld :username='name' @add="add1" v-model="InputData.condition">
       <template v-slot:message>
         <p>Let's enjoy programming!</p>
