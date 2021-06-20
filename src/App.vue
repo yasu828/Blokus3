@@ -1,20 +1,5 @@
 <template>
   <div id="app">
-    <button @click="componentName = 'HelloWorld'">Header</button>
-    <button @click="componentName = ''">Body</button>
-    <component :is="componentName"></component>
-    <keep-alive>
-      <component :is="componentName"></component>
-    </keep-alive>
-    
-    <HelloWorld :username='name' @add="add1" v-model="InputData.condition">
-      <template v-slot:message>
-        <p>Let's enjoy programming!</p>
-    </template>
-    <p>condition : {{ InputData.condition }} </p>
-    </HelloWorld>
-    <HelloWorld :username='name' @add="add2"></HelloWorld>
-    <p>total : {{ totalcount }} </p>
     <!-- ブロックを配置する基盤 -->
     <div class="table">
       <table>
@@ -175,63 +160,18 @@
       </div>
     <!--// 選んだブロックの表示 -->
     </div>
-    <div class="player4">
-    <!-- 手持ちのブロック -->
-      <div class="handBlock">
-        <div 
-          v-for="(block, bi) in blocks" 
-          :key="bi" 
-          group="items" 
-          @click="handClick(block)"
-        >
-          <table>
-            <tr v-for="(blockTR, yi) in block.data" :key="yi">
-              <td 
-                class="blockCell" 
-                v-for="(blockTD, xi) in blockTR" 
-                :key="xi" 
-                :class="`is-${blockTD.code}`"
-              >
-              </td>
-            </tr>
-          </table>
-        </div>
-      </div>
-      <!-- // 手持ちのブロック -->
-      <!-- 選んだブロックの表示 -->
-      <div class="chooseblocks">
-        <draggable tag="table">
-          <tr 
-            v-for="(chooseBlockRow, vi) in chooseBlock"
-            :key="vi">
-            <td 
-              class="blockCell2"
-              v-for="(chooseBlockCell, mi) in chooseBlockRow" 
-              :key="mi"
-              :class="`is-${chooseBlockCell.code}`">
-            </td>
-          </tr>
-        </draggable>
-        <button @click.prevent @click="turnLeft()">左に回転
-        </button>
-        <button @click.prevent @click="turnRight()">右に回転
-        </button>
-        <button @click.prevent @click="Inversion()">反転
-        </button>
-      </div>
-    <!--// 選んだブロックの表示 -->
-    </div>
+    <PlayersBlock class="player4"></PlayersBlock>
   </div>
 </template>
 
 <script>
 
 import draggable from 'vuedraggable'
-import HelloWorld from './components/HelloWorld.vue'
+import PlayersBlock from './components/PlayersBlock.vue'
 export default {
   components: {
     draggable,
-    HelloWorld,
+    PlayersBlock,
   },
   el: '#components-demo',
   name: 'App',
