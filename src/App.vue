@@ -173,7 +173,6 @@ export default {
     draggable,
     PlayersBlock,
   },
-  el: '#components-demo',
   name: 'App',
   data (){
     const blocks = [
@@ -380,25 +379,9 @@ export default {
       item: [],
       haveItem: [],
       chooseBlock: chooseBlock,
-      name:"データを送ります",
-      count1: 0,
-      count2: 0,
-      totalcount: 0,
-      InputData: {
-        condition: ""
-      },
-      componentName: "Header"
     };
   },
   methods:{
-    add1(count){
-      this.count1 = count;
-      this.totalcount = this.count1 + this.count2;
-    },
-    add2(count){
-      this.count2 = count;
-      this.totalcount = this.count1 + this.count2;
-    },
     turnLeft(){
       this.haveItem = JSON.parse(JSON.stringify(this.chooseBlock))
       for (let i = 0; i < 5; i++) {
