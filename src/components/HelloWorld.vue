@@ -5,6 +5,10 @@
     <h3>{{ messe }}</h3>
     <h3>{{ username }}</h3>
     <p><button @click="increment">+1</button> {{ count }} </p>
+    <div>
+      <label for="condition">元気？</label>
+      <input type="text" id="condition" :value="value" @input="$emit('input', $event.target.value)">
+    </div>
   </div>
 </template>
 
@@ -18,7 +22,8 @@ export default {
     }
   },
   props: {
-    username: String
+    username: String,
+    value: String
   },
   methods: {
     increment(){
