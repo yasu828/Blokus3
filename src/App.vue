@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <HelloWorld></HelloWorld>
     <!-- ブロックを配置する基盤 -->
     <div class="table">
       <table>
@@ -210,11 +211,15 @@
 </template>
 
 <script>
+
 import draggable from 'vuedraggable'
+import HelloWorld from './components/HelloWorld.vue'
 export default {
   components: {
     draggable,
+    HelloWorld,
   },
+  el: '#components-demo',
   name: 'App',
   data (){
     const blocks = [
@@ -386,14 +391,6 @@ export default {
           [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
           [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
       ]},
-      { name:21,
-        data:[
-          [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
-          [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
-          [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
-          [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
-          [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
-      ]},
     ];
     const mainBoard = [];
       for (let y = 0; y < 20; y++ ) {
@@ -423,15 +420,12 @@ export default {
       }
 // ここからvue.js記述
     return{
-      components: {
-        'draggable': draggable,
-      },
       mainBoard: mainBoard,
       blocks:blocks,
       dragItem: "",
       item: [],
       haveItem: [],
-      chooseBlock: blocks[21].data,
+      chooseBlock: chooseBlock,
     };
   },
   methods:{
@@ -481,7 +475,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -543,6 +537,7 @@ export default {
 .is-1{
     background-color: rgb(43, 144, 226);
 }
+
 .handBlock{
   height: 200px;
   width: 320px;
