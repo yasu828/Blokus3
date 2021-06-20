@@ -1,6 +1,11 @@
 <template>
   <div id="app">
-
+    <button @click="componentName = 'HelloWorld'">Header</button>
+    <button @click="componentName = ''">Body</button>
+    <component :is="componentName"></component>
+    <keep-alive>
+      <component :is="componentName"></component>
+    </keep-alive>
     <HelloWorld :username='name' @add="add1" v-model="InputData.condition">
       <template v-slot:message>
         <p>Let's enjoy programming!</p>
@@ -441,6 +446,7 @@ export default {
       InputData: {
         condition: ""
       },
+      componentName: "Header"
     };
   },
   methods:{
