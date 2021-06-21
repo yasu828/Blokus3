@@ -1,25 +1,5 @@
 <template>
   <div class="p4">
-      <div class="chooseblocks">
-        <draggable tag="table">
-          <tr 
-            v-for="(chooseBlockRow, vi) in chooseBlock"
-            :key="vi">
-            <td 
-              class="blockCell2"
-              v-for="(chooseBlockCell, mi) in chooseBlockRow" 
-              :key="mi"
-              :class="`is-${chooseBlockCell.code}`">
-            </td>
-          </tr>
-        </draggable>
-        <button @click.prevent @click="turnLeft()">左に回転
-        </button>
-        <button @click.prevent @click="turnRight()">右に回転
-        </button>
-        <button @click.prevent @click="Inversion()">反転
-        </button>
-      </div>
       <div class="handBlock">
         <div 
           v-for="(block, bi) in blocks" 
@@ -40,11 +20,32 @@
           </table>
         </div>
       </div>
+      <div class="chooseblocks">
+        <draggable tag="table">
+          <tr 
+            v-for="(chooseBlockRow, vi) in chooseBlock"
+            :key="vi">
+            <td 
+              class="blockCell2"
+              v-for="(chooseBlockCell, mi) in chooseBlockRow" 
+              :key="mi"
+              :class="`is-${chooseBlockCell.code}`">
+            </td>
+          </tr>
+        </draggable>
+        <button @click.prevent @click="turnLeft()">左に回転
+        </button>
+        <button @click.prevent @click="turnRight()">右に回転
+        </button>
+        <button @click.prevent @click="Inversion()">反転
+        </button>
+      </div>
   </div>
 </template>
 
 <script>
 import draggable from 'vuedraggable'
+// import "./style.scss";
 export default {
     components: {
     draggable,
@@ -244,7 +245,7 @@ export default {
 
 //   },
   methods: {
-          turnLeft(){
+    turnLeft(){
       this.haveItem = JSON.parse(JSON.stringify(this.chooseBlock))
       for (let i = 0; i < 5; i++) {
         for (let j = 0; j < 5; j++) {
@@ -269,13 +270,13 @@ export default {
       }
     },
     handClick(block){
-      this.dragItem = block.name;
       this.item = this.blocks.find(x=>x.name==block.name).data;
       for (let i = 0; i < 5; i++) {
         for (let j = 0; j < 5; j++) {
           this.chooseBlock[i][j].code = this.item[i][j].code
         }
       }
+      this.$emit("click",this.chooseBlock);
     },
   }
 }
