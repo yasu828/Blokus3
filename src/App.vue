@@ -1,16 +1,16 @@
 <template>
   <div id="app">
-    <LeftPlayersBlock 
+    <LeftPlayersBlock1 
     class="player1"
-    @click="handClick3"
+    @click="handClick"
     >
-    </LeftPlayersBlock>
+    </LeftPlayersBlock1>
 
-    <LeftPlayersBlock 
+    <LeftPlayersBlock2 
     class="player2"
-    @click="handClick3"
+    @click="handClick"
     >
-    </LeftPlayersBlock>
+    </LeftPlayersBlock2>
 
     <!-- ブロックを配置する基盤 -->
     <div class="table">
@@ -35,29 +35,32 @@
     </div>
     <!-- //ブロックを配置する基盤 -->
 
-    <RightPlayersBlock 
+    <RightPlayersBlock1 
     class="player3"
-    @click="handClick3"
+    @click="handClick"
     >
-    </RightPlayersBlock>
+    </RightPlayersBlock1>
     
-    <RightPlayersBlock 
+    <RightPlayersBlock2 
     class="player4"
-    @click="handClick4"
+    @click="handClick"
     >
-    </RightPlayersBlock>
+    </RightPlayersBlock2>
   </div>
 </template>
 
 <script>
 
-import RightPlayersBlock from './components/RightPlayersBlock.vue'
-import LeftPlayersBlock from './components/LeftPlayersBlock.vue'
-// import "./style.scss";
+import RightPlayersBlock1 from './components/RightPlayersBlock1.vue'
+import RightPlayersBlock2 from './components/RightPlayersBlock2.vue'
+import LeftPlayersBlock1 from './components/LeftPlayersBlock1.vue'
+import LeftPlayersBlock2 from './components/LeftPlayersBlock2.vue'
 export default {
   components: {
-    RightPlayersBlock,
-    LeftPlayersBlock,
+    RightPlayersBlock1,
+    RightPlayersBlock2,
+    LeftPlayersBlock1,
+    LeftPlayersBlock2,
   },
   name: 'App',
   data (){
@@ -77,24 +80,18 @@ export default {
 // ここからvue.js記述
     return{
       mainBoard: mainBoard,
-      item1: [],
-      item2: [],
-      item3: [],
-      item4: [],
+      item: [],
     };
   },
   methods:{
-    handClick3(chooseBlock){
-      this.item3 = chooseBlock
-    },
-    handClick4(chooseBlock){
-      this.item4 = chooseBlock
+    handClick(chooseBlock){
+      this.item = chooseBlock
     },
     droped(x, y){
-      if (this.item3.length == 5) {
-        for (let i = 0; i < 5; i++) {
-          for (let j = 0; j < 5; j++) {
-            this.mainBoard[y + i][x + j].code = this.item3[i][j].code;
+      for (let i = 0; i < 5; i++) {
+        for (let j = 0; j < 5; j++) {
+          if (this.mainBoard[y + i][x + j].code < 1) {
+            this.mainBoard[y + i][x + j].code = this.item[i][j].code;
           }
         }
       }
@@ -160,11 +157,17 @@ export default {
   width: 16px;
 }
 
-.is-2{
-  background-color: blueviolet;
-}
 .is-1{
-  background-color: rgb(43, 144, 226);
+    background-color: rgb(10, 241, 29);
+}
+.is-2{
+    background-color: rgb(4, 73, 250);
+}
+.is-3{
+    background-color: rgb(248, 29, 29);
+}
+.is-4{
+    background-color: rgb(244, 181, 10);
 }
 
 .handBlock{

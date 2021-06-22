@@ -1,25 +1,5 @@
 <template>
   <div class="p4">
-      <div class="chooseblocks">
-        <draggable tag="table">
-          <tr 
-            v-for="(chooseBlockRow, vi) in chooseBlock"
-            :key="vi">
-            <td 
-              class="blockCell2"
-              v-for="(chooseBlockCell, mi) in chooseBlockRow" 
-              :key="mi"
-              :class="`is-${chooseBlockCell.code}`">
-            </td>
-          </tr>
-        </draggable>
-        <button @click.prevent @click="turnLeft()">左に回転
-        </button>
-        <button @click.prevent @click="turnRight()">右に回転
-        </button>
-        <button @click.prevent @click="Inversion()">反転
-        </button>
-      </div>
       <div class="handBlock">
         <div 
           v-for="(block, bi) in blocks" 
@@ -39,6 +19,28 @@
             </tr>
           </table>
         </div>
+      </div>
+      <div class="chooseblocks">
+      <draggable>
+        <table>
+          <tr 
+            v-for="(chooseBlockRow, vi) in chooseBlock"
+            :key="vi">
+            <td 
+              class="blockCell2"
+              v-for="(chooseBlockCell, mi) in chooseBlockRow" 
+              :key="mi"
+              :class="`is-${chooseBlockCell.code}`">
+            </td>
+          </tr>
+        </table>
+      </draggable>
+        <button @click.prevent @click="turnLeft()">左に回転
+        </button>
+        <button @click.prevent @click="turnRight()">右に回転
+        </button>
+        <button @click.prevent @click="Inversion()">反転
+        </button>
       </div>
   </div>
 </template>
@@ -283,25 +285,17 @@ export default {
 </script>
 
 <style scoped>
-p{
-    color: forestgreen;
-}
-
 .blockCell{
-    height: 6px;
-    width: 6px;
+  height: 6px;
+  width: 6px;
 }
 .blockCell2{
-    height: 16px;
-    width: 16px;
-
+  height: 16px;
+  width: 16px;
 }
 
-.is-2{
-    background-color: blueviolet;
-}
 .is-1{
-    background-color: rgb(43, 144, 226);
+  background-color: rgb(10, 241, 29);
 }
 
 .handBlock{
