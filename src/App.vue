@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <BlokusHeader class="header"></BlokusHeader>
     <LeftPlayersBlock1 
     class="player1"
     @click="handClick"
@@ -55,8 +56,10 @@ import RightPlayersBlock1 from './components/RightPlayersBlock1.vue'
 import RightPlayersBlock2 from './components/RightPlayersBlock2.vue'
 import LeftPlayersBlock1 from './components/LeftPlayersBlock1.vue'
 import LeftPlayersBlock2 from './components/LeftPlayersBlock2.vue'
+import BlokusHeader from './components/BlokusHeader.vue'
 export default {
   components: {
+    BlokusHeader,
     RightPlayersBlock1,
     RightPlayersBlock2,
     LeftPlayersBlock1,
@@ -108,22 +111,38 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+background:
+    linear-gradient(
+      90deg,
+      rgba(83, 46, 7, 0.6),
+      rgba(107, 66, 22, 0.6) 60%,
+      rgba(58, 43, 26, 0.6)
+    ),
+    repeating-radial-gradient(
+      ellipse at 60% 500%,
+      #3d2812,
+      #c08646 0.2%,
+      #d09352 0.6%,
+      #d09352 1%
+    );
   display: grid;
-  height: 600px;
+  height: 100vh;
   grid-template: 
-  "... ... ... ... ..." 1fr
-  "p1 main main main p3" 1fr
-  "... main main main ..." 1fr
-  "p2 main main main p4" 1fr
-  "... ... ... ... ..." 1fr
-  /1fr 1fr 1fr 1fr 1fr;
+  "header header header header header" 10%
+  "...    ...    ...    ...    ..."    30px
+  "p1     main   main   main   p3"     2fr
+  "...    main   main   main   ..."    2fr
+  "p2     main   main   main   p4"     2fr
+  "...    ...    ...    ...    ..."    1fr
+  /1fr    2fr    2fr    2fr    1fr;
 }
 
+.header{
+  grid-area: header;
+}
 .table{
   grid-area: main;
 }
-
 .player1{
   grid-area: p1;
   display: flex;

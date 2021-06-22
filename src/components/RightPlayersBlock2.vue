@@ -242,9 +242,6 @@ export default {
         chooseBlock: chooseBlock,
     }
   },
-//   props: {
-
-//   },
   methods: {
     turnLeft(){
       this.haveItem = JSON.parse(JSON.stringify(this.chooseBlock))
