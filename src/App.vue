@@ -117,17 +117,16 @@ export default {
   display: grid;
   height: 100vh;
   grid-template: 
-  "header header header header header" 12%
-  "...    ...    ...    ...    ..."    3%
-  "p1     main   main   main   p3"     42%
-  "...    main   main   main   ..."    1%
-  "p2     main   main   main   p4"     42%
-
-  /1fr    2fr    2fr    2fr    1fr;
+  "top  top  top  top  top  top  top"  12%
+  ".... .... .... .... .... .... ...." 3%
+  ".... p1   main main main p3   ...." 42%
+  ".... .... main main main ...  ...." 1%
+  ".... p2   main main main p4   ...." 42%
+  /10px 1fr  2fr  2fr  2fr  1fr  10px;
 }
 // grid-areaここから
 .header{
-  grid-area: header;
+  grid-area: top;
 }
 .table{
   grid-area: main;
