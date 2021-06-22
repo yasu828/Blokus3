@@ -16,7 +16,7 @@ export default {
 
 <style scoped>
 .blokus-header{
-  background-color: dodgerblue;
+  background-color: rgba(225, 207, 10, 0.973);
   border-bottom: black solid 1px;
   height: 100%;
     color: whitesmoke;

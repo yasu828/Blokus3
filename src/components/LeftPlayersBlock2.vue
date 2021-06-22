@@ -300,6 +300,7 @@ export default {
   display: flex;
   flex-wrap: wrap;
   border: black 1px solid;
+  background-color: white;
 }
 
 .chooseblocks{

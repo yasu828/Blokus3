@@ -111,12 +111,12 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-background:
+  background:
     linear-gradient(
       90deg,
-      rgba(83, 46, 7, 0.6),
-      rgba(107, 66, 22, 0.6) 60%,
-      rgba(58, 43, 26, 0.6)
+      rgba(123, 113, 102, 0.6),
+      rgba(106, 93, 79, 0.6) 60%,
+      rgba(159, 136, 110, 0.6)
     ),
     repeating-radial-gradient(
       ellipse at 60% 500%,
@@ -128,52 +128,51 @@ background:
   display: grid;
   height: 100vh;
   grid-template: 
-  "header header header header header" 10%
-  "...    ...    ...    ...    ..."    30px
-  "p1     main   main   main   p3"     2fr
-  "...    main   main   main   ..."    2fr
-  "p2     main   main   main   p4"     2fr
-  "...    ...    ...    ...    ..."    1fr
+  "header header header header header" 12%
+  "...    ...    ...    ...    ..."    3%
+  "p1     main   main   main   p3"     42%
+  "...    main   main   main   ..."    1%
+  "p2     main   main   main   p4"     42%
+
   /1fr    2fr    2fr    2fr    1fr;
 }
-
+// grid-areaここから
 .header{
   grid-area: header;
 }
 .table{
   grid-area: main;
+  background-color: white;
+  height: 91%;
+  border: black solid 3px;
+  margin: auto;
 }
 .player1{
   grid-area: p1;
   display: flex;
+  margin: auto;
 }
 .player2{
   grid-area: p2;
   display: flex;
+  margin: auto;
 }
 .player3{
   grid-area: p3;
   display: flex;
+  margin: auto;
 }
 .player4{
   grid-area: p4;
   display: flex;
+  margin: auto;
 }
-
+// grid-areaここまで
 
 .MainTableCell{
   height: 20px;
   width: 20px;
   border: solid black 1px;
-}
-
-.blockCell{
-  height: 6px;
-  width: 6px;
-}
-.blockCell2{
-  height: 16px;
-  width: 16px;
 }
 
 .is-1{
@@ -187,14 +186,6 @@ background:
 }
 .is-4{
     background-color: rgb(244, 181, 10);
-}
-
-.handBlock{
-  height: 200px;
-  width: 320px;
-  display: flex;
-  flex-wrap: wrap;
-  border: black 1px solid;
 }
 
 .chooseblocks{
