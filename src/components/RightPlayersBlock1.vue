@@ -1,7 +1,8 @@
 <template>
   <div class="p4">
-      <div class="chooseblocks">
-        <draggable tag="table">
+    <div class="chooseblocks">
+      <draggable>
+        <table>
           <tr 
             v-for="(chooseBlockRow, vi) in chooseBlock"
             :key="vi">
@@ -12,14 +13,15 @@
               :class="`is-${chooseBlockCell.code}`">
             </td>
           </tr>
-        </draggable>
-        <button @click.prevent @click="turnLeft()">左に回転
-        </button>
-        <button @click.prevent @click="turnRight()">右に回転
-        </button>
-        <button @click.prevent @click="Inversion()">反転
-        </button>
-      </div>
+          </table>
+      </draggable>
+      <button @click.prevent @click="turnLeft()">左に回転
+      </button>
+      <button @click.prevent @click="turnRight()">右に回転
+      </button>
+      <button @click.prevent @click="Inversion()">反転
+      </button>
+    </div>
       <div class="handBlock">
         <div 
           v-for="(block, bi) in blocks" 
@@ -283,22 +285,17 @@ export default {
 </script>
 
 <style scoped>
-p{
-    color: forestgreen;
-}
-
 .blockCell{
-    height: 6px;
-    width: 6px;
+  height: 6px;
+  width: 6px;
 }
 .blockCell2{
-    height: 16px;
-    width: 16px;
-
+  height: 16px;
+  width: 16px;
 }
 
 .is-2{
-    background-color: rgb(4, 73, 250);
+  background-color: rgb(4, 73, 250);
 }
 
 .handBlock{

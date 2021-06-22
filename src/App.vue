@@ -55,7 +55,6 @@ import RightPlayersBlock1 from './components/RightPlayersBlock1.vue'
 import RightPlayersBlock2 from './components/RightPlayersBlock2.vue'
 import LeftPlayersBlock1 from './components/LeftPlayersBlock1.vue'
 import LeftPlayersBlock2 from './components/LeftPlayersBlock2.vue'
-// import "./style.scss";
 export default {
   components: {
     RightPlayersBlock1,

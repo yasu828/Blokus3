@@ -21,7 +21,8 @@
         </div>
       </div>
       <div class="chooseblocks">
-        <draggable tag="table">
+      <draggable>
+        <table>
           <tr 
             v-for="(chooseBlockRow, vi) in chooseBlock"
             :key="vi">
@@ -32,7 +33,8 @@
               :class="`is-${chooseBlockCell.code}`">
             </td>
           </tr>
-        </draggable>
+        </table>
+      </draggable>
         <button @click.prevent @click="turnLeft()">左に回転
         </button>
         <button @click.prevent @click="turnRight()">右に回転
@@ -283,18 +285,13 @@ export default {
 </script>
 
 <style scoped>
-p{
-    color: forestgreen;
-}
-
 .blockCell{
-    height: 6px;
-    width: 6px;
+  height: 6px;
+  width: 6px;
 }
 .blockCell2{
-    height: 16px;
-    width: 16px;
-
+  height: 16px;
+  width: 16px;
 }
 
 .is-3{

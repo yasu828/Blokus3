@@ -1,7 +1,8 @@
 <template>
   <div class="p4">
-      <div class="chooseblocks">
-        <draggable tag="table">
+    <div class="chooseblocks">
+      <draggable>
+        <table>
           <tr 
             v-for="(chooseBlockRow, vi) in chooseBlock"
             :key="vi">
@@ -12,7 +13,8 @@
               :class="`is-${chooseBlockCell.code}`">
             </td>
           </tr>
-        </draggable>
+        </table>
+      </draggable>
         <button @click.prevent @click="turnLeft()">左に回転
         </button>
         <button @click.prevent @click="turnRight()">右に回転
@@ -45,7 +47,6 @@
 
 <script>
 import draggable from 'vuedraggable'
-// import "./style.scss";
 export default {
     components: {
     draggable,
@@ -283,22 +284,18 @@ export default {
 </script>
 
 <style scoped>
-p{
-    color: forestgreen;
-}
 
 .blockCell{
-    height: 6px;
-    width: 6px;
+  height: 6px;
+  width: 6px;
 }
 .blockCell2{
-    height: 16px;
-    width: 16px;
-
+  height: 16px;
+  width: 16px;
 }
 
 .is-4{
-    background-color: rgb(244, 181, 10);
+  background-color: rgb(244, 181, 10);
 }
 
 
