@@ -16,8 +16,8 @@ export default {
 
 <style scoped>
 .blokus-header{
-  background-color: rgba(225, 207, 10, 0.973);
-  border-bottom: black solid 1px;
+  background-color: rgba(91, 159, 180, 0.973);
+  border-bottom: rgb(0, 0, 0) solid 1px;
   height: 100%;
     color: whitesmoke;
   font-family: HanziPen SC;

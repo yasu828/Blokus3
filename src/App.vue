@@ -111,20 +111,9 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  background:
-    linear-gradient(
-      90deg,
-      rgba(123, 113, 102, 0.6),
-      rgba(106, 93, 79, 0.6) 60%,
-      rgba(159, 136, 110, 0.6)
-    ),
-    repeating-radial-gradient(
-      ellipse at 60% 500%,
-      #3d2812,
-      #c08646 0.2%,
-      #d09352 0.6%,
-      #d09352 1%
-    );
+	background-color: rgba(123, 113, 102, 0.6);
+	background-image:radial-gradient(#5a5e59 1px, transparent 1px);
+	background-size: 20px 20px;
   display: grid;
   height: 100vh;
   grid-template: 
