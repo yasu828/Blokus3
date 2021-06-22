@@ -1,16 +1,16 @@
 <template>
   <div id="app">
-    <LeftPlayersBlock 
+    <LeftPlayersBlock1 
     class="player1"
     @click="handClick3"
     >
-    </LeftPlayersBlock>
+    </LeftPlayersBlock1>
 
-    <LeftPlayersBlock 
+    <LeftPlayersBlock2 
     class="player2"
     @click="handClick3"
     >
-    </LeftPlayersBlock>
+    </LeftPlayersBlock2>
 
     <!-- ブロックを配置する基盤 -->
     <div class="table">
@@ -35,29 +35,33 @@
     </div>
     <!-- //ブロックを配置する基盤 -->
 
-    <RightPlayersBlock 
+    <RightPlayersBlock1 
     class="player3"
     @click="handClick3"
     >
-    </RightPlayersBlock>
+    </RightPlayersBlock1>
     
-    <RightPlayersBlock 
+    <RightPlayersBlock2 
     class="player4"
     @click="handClick4"
     >
-    </RightPlayersBlock>
+    </RightPlayersBlock2>
   </div>
 </template>
 
 <script>
 
-import RightPlayersBlock from './components/RightPlayersBlock.vue'
-import LeftPlayersBlock from './components/LeftPlayersBlock.vue'
+import RightPlayersBlock1 from './components/RightPlayersBlock1.vue'
+import RightPlayersBlock2 from './components/RightPlayersBlock2.vue'
+import LeftPlayersBlock1 from './components/LeftPlayersBlock1.vue'
+import LeftPlayersBlock2 from './components/LeftPlayersBlock2.vue'
 // import "./style.scss";
 export default {
   components: {
-    RightPlayersBlock,
-    LeftPlayersBlock,
+    RightPlayersBlock1,
+    RightPlayersBlock2,
+    LeftPlayersBlock1,
+    LeftPlayersBlock2,
   },
   name: 'App',
   data (){
