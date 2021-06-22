@@ -47,7 +47,6 @@
 
 <script>
 import draggable from 'vuedraggable'
-// import "./style.scss";
 export default {
     components: {
     draggable,
@@ -243,9 +242,6 @@ export default {
         chooseBlock: chooseBlock,
     }
   },
-//   props: {
-
-//   },
   methods: {
     turnLeft(){
       this.haveItem = JSON.parse(JSON.stringify(this.chooseBlock))
@@ -303,12 +299,14 @@ export default {
   width: 320px;
   display: flex;
   flex-wrap: wrap;
-  border: black 1px solid;
+  border: rgb(10, 241, 29) 2px solid;
+  background-color: rgb(238, 255, 239);
 }
 
 .chooseblocks{
   height: 120px;
   width: 120px;
   background-color: beige;
+  border: rgb(10, 241, 29) 1px solid;
 }
 </style>

@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <BlokusHeader class="header"></BlokusHeader>
     <LeftPlayersBlock1 
     class="player1"
     @click="handClick"
@@ -55,8 +56,10 @@ import RightPlayersBlock1 from './components/RightPlayersBlock1.vue'
 import RightPlayersBlock2 from './components/RightPlayersBlock2.vue'
 import LeftPlayersBlock1 from './components/LeftPlayersBlock1.vue'
 import LeftPlayersBlock2 from './components/LeftPlayersBlock2.vue'
+import BlokusHeader from './components/BlokusHeader.vue'
 export default {
   components: {
+    BlokusHeader,
     RightPlayersBlock1,
     RightPlayersBlock2,
     LeftPlayersBlock1,
@@ -108,53 +111,57 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+	background-color: rgba(123, 113, 102, 0.6);
+	background-image:radial-gradient(#5a5e59 1px, transparent 1px);
+	background-size: 20px 20px;
   display: grid;
-  height: 600px;
+  height: 100vh;
   grid-template: 
-  "... ... ... ... ..." 1fr
-  "p1 main main main p3" 1fr
-  "... main main main ..." 1fr
-  "p2 main main main p4" 1fr
-  "... ... ... ... ..." 1fr
-  /1fr 1fr 1fr 1fr 1fr;
-}
+  "header header header header header" 12%
+  "...    ...    ...    ...    ..."    3%
+  "p1     main   main   main   p3"     42%
+  "...    main   main   main   ..."    1%
+  "p2     main   main   main   p4"     42%
 
+  /1fr    2fr    2fr    2fr    1fr;
+}
+// grid-areaここから
+.header{
+  grid-area: header;
+}
 .table{
   grid-area: main;
+  background-color: white;
+  height: 91%;
+  border: black solid 3px;
+  margin: auto;
 }
-
 .player1{
   grid-area: p1;
   display: flex;
+  margin: auto;
 }
 .player2{
   grid-area: p2;
   display: flex;
+  margin: auto;
 }
 .player3{
   grid-area: p3;
   display: flex;
+  margin: auto;
 }
 .player4{
   grid-area: p4;
   display: flex;
+  margin: auto;
 }
-
+// grid-areaここまで
 
 .MainTableCell{
   height: 20px;
   width: 20px;
   border: solid black 1px;
-}
-
-.blockCell{
-  height: 6px;
-  width: 6px;
-}
-.blockCell2{
-  height: 16px;
-  width: 16px;
 }
 
 .is-1{
@@ -168,14 +175,6 @@ export default {
 }
 .is-4{
     background-color: rgb(244, 181, 10);
-}
-
-.handBlock{
-  height: 200px;
-  width: 320px;
-  display: flex;
-  flex-wrap: wrap;
-  border: black 1px solid;
 }
 
 .chooseblocks{

@@ -242,9 +242,6 @@ export default {
         chooseBlock: chooseBlock,
     }
   },
-//   props: {
-
-//   },
   methods: {
     turnLeft(){
       this.haveItem = JSON.parse(JSON.stringify(this.chooseBlock))
@@ -304,12 +301,14 @@ export default {
   width: 320px;
   display: flex;
   flex-wrap: wrap;
-  border: black 1px solid;
+  border: rgb(244, 181, 10) 2px solid;
+  background-color: rgb(255, 250, 238);
 }
 
 .chooseblocks{
   height: 120px;
   width: 120px;
   background-color: beige;
+  border: rgb(244, 181, 10) 1px solid;
 }
 </style>
