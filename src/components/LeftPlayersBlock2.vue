@@ -291,7 +291,7 @@ export default {
 }
 
 .is-3{
-    background-color: rgb(248, 29, 29);
+  background-color: rgb(248, 29, 29);
 }
 
 .handBlock{
@@ -299,13 +299,14 @@ export default {
   width: 320px;
   display: flex;
   flex-wrap: wrap;
-  border: black 1px solid;
-  background-color: white;
+  border: rgb(248, 29, 29) 2px solid;
+  background-color: rgb(252, 231, 231);
 }
 
 .chooseblocks{
   height: 120px;
   width: 120px;
   background-color: beige;
+  border: rgb(248, 29, 29) 1px solid;
 }
 </style>
