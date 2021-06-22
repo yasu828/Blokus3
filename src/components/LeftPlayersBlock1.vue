@@ -35,10 +35,12 @@
           </tr>
         </table>
       </draggable>
-        <button @click.prevent @click="turnLeft()">左に回転
+      <div class="btn">
+        <button class="left-btn" @click.prevent @click="turnLeft()">左回転
         </button>
-        <button @click.prevent @click="turnRight()">右に回転
+        <button class="right-btn" @click.prevent @click="turnRight()">右回転
         </button>
+      </div>
         <button @click.prevent @click="Inversion()">反転
         </button>
       </div>
@@ -280,14 +282,14 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .blockCell{
   height: 6px;
   width: 6px;
 }
 .blockCell2{
-  height: 16px;
-  width: 16px;
+  height: 20px;
+  width: 20px;
 }
 
 .is-1{
@@ -295,8 +297,8 @@ export default {
 }
 
 .handBlock{
-  height: 200px;
-  width: 320px;
+  height: 100%;
+  width: 280px;
   display: flex;
   flex-wrap: wrap;
   border: rgb(10, 241, 29) 2px solid;
@@ -308,5 +310,16 @@ export default {
   width: 120px;
   background-color: beige;
   border: rgb(10, 241, 29) 1px solid;
+}
+
+.btn{
+  display: flex;
+  width: 100%;
+  &.left-btn{
+    width: 50%;
+  }
+  &.right-btn{
+    width: 50%;
+  }
 }
 </style>
