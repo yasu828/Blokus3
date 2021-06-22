@@ -2,13 +2,13 @@
   <div id="app">
     <LeftPlayersBlock1 
     class="player1"
-    @click="handClick3"
+    @click="handClick"
     >
     </LeftPlayersBlock1>
 
     <LeftPlayersBlock2 
     class="player2"
-    @click="handClick3"
+    @click="handClick"
     >
     </LeftPlayersBlock2>
 
@@ -37,13 +37,13 @@
 
     <RightPlayersBlock1 
     class="player3"
-    @click="handClick3"
+    @click="handClick"
     >
     </RightPlayersBlock1>
     
     <RightPlayersBlock2 
     class="player4"
-    @click="handClick3"
+    @click="handClick"
     >
     </RightPlayersBlock2>
   </div>
@@ -81,25 +81,19 @@ export default {
 // ここからvue.js記述
     return{
       mainBoard: mainBoard,
-      item1: [],
-      item2: [],
-      item3: [],
-      item4: [],
+      item: [],
     };
   },
   methods:{
-    handClick3(chooseBlock){
-      this.item3 = chooseBlock
-    },
-    handClick4(chooseBlock){
-      this.item4 = chooseBlock
+    handClick(chooseBlock){
+      this.item = chooseBlock
     },
     droped(x, y){
       for (let i = 0; i < 5; i++) {
         for (let j = 0; j < 5; j++) {
-          // if (this.mainBoard[y + i][x + j].code == 0) {
-            this.mainBoard[y + i][x + j].code = this.item3[i][j].code;
-          // }
+          if (this.mainBoard[y + i][x + j].code < 1) {
+            this.mainBoard[y + i][x + j].code = this.item[i][j].code;
+          }
         }
       }
       this.item3 = []
