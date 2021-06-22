@@ -297,11 +297,8 @@ p{
 
 }
 
-.is-2{
-    background-color: blueviolet;
-}
 .is-1{
-    background-color: rgb(43, 144, 226);
+    background-color: rgb(10, 241, 29);
 }
 
 .handBlock{

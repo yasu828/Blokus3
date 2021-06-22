@@ -43,7 +43,7 @@
     
     <RightPlayersBlock2 
     class="player4"
-    @click="handClick4"
+    @click="handClick3"
     >
     </RightPlayersBlock2>
   </div>
@@ -95,11 +95,11 @@ export default {
       this.item4 = chooseBlock
     },
     droped(x, y){
-      if (this.item3.length == 5) {
-        for (let i = 0; i < 5; i++) {
-          for (let j = 0; j < 5; j++) {
+      for (let i = 0; i < 5; i++) {
+        for (let j = 0; j < 5; j++) {
+          // if (this.mainBoard[y + i][x + j].code == 0) {
             this.mainBoard[y + i][x + j].code = this.item3[i][j].code;
-          }
+          // }
         }
       }
       this.item3 = []
@@ -164,11 +164,17 @@ export default {
   width: 16px;
 }
 
-.is-2{
-  background-color: blueviolet;
-}
 .is-1{
-  background-color: rgb(43, 144, 226);
+    background-color: rgb(10, 241, 29);
+}
+.is-2{
+    background-color: rgb(4, 73, 250);
+}
+.is-3{
+    background-color: rgb(248, 29, 29);
+}
+.is-4{
+    background-color: rgb(244, 181, 10);
 }
 
 .handBlock{

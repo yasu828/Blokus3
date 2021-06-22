@@ -54,92 +54,119 @@ export default {
     const blocks = [
       { name:0,
         data:[
-          [{code:1}]
+          [{code:4}, {code:0}, {code:0}, {code:0}, {code:0}],
+          [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
+          [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
+          [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
+          [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
       ]},
       { name:1,
         data:[
-          [{code:1}],
-          [{code:1}],
+          [{code:4}, {code:0}, {code:0}, {code:0}, {code:0}],
+          [{code:4}, {code:0}, {code:0}, {code:0}, {code:0}],
+          [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
+          [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
+          [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
       ]},
       { name:2,
         data:[
-          [{code:1}, {code:0}],
-          [{code:1}, {code:1}],
+          [{code:4}, {code:0}, {code:0}, {code:0}, {code:0}],
+          [{code:4}, {code:4}, {code:0}, {code:0}, {code:0}],
+          [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
+          [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
+          [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
       ]},
       { name:3,
         data:[
-          [{code:1}, {code:1}, {code:1}],
+          [{code:4}, {code:4}, {code:4}, {code:0}, {code:0}],
+          [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
+          [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
+          [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
+          [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
       ]},
       { name:4,
         data:[
-          [{code:1}, {code:1}],
-          [{code:1}, {code:1}],
+          [{code:4}, {code:4}, {code:0}, {code:0}, {code:0}],
+          [{code:4}, {code:4}, {code:0}, {code:0}, {code:0}],
+          [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
+          [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
+          [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
       ]},
       { name:5,
         data:[
-          [{code:0}, {code:1}, {code:0}],
-          [{code:1}, {code:1}, {code:1}],
+          [{code:0}, {code:4}, {code:0}, {code:0}, {code:0}],
+          [{code:4}, {code:4}, {code:4}, {code:0}, {code:0}],
+          [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
+          [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
+          [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
       ]},
       { name:6,
         data:[
-          [{code:1}, {code:1}, {code:1}, {code:1}],
+          [{code:4}, {code:4}, {code:4}, {code:4}, {code:0}],
+          [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
+          [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
+          [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
+          [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
       ]},
       { name:7,
         data:[
-          [{code:1}, {code:0}, {code:0}],
-          [{code:1}, {code:1}, {code:1}],
+          [{code:4}, {code:0}, {code:0}, {code:0}, {code:0}],
+          [{code:4}, {code:4}, {code:4}, {code:0}, {code:0}],
+          [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
+          [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
+          [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
       ]},
       { name:8,
         data:[
-          [{code:1}, {code:0}, {code:0}, {code:0}, {code:0}],
-          [{code:1}, {code:1}, {code:0}, {code:0}, {code:0}],
-          [{code:0}, {code:1}, {code:0}, {code:0}, {code:0}],
+          [{code:4}, {code:0}, {code:0}, {code:0}, {code:0}],
+          [{code:4}, {code:4}, {code:0}, {code:0}, {code:0}],
+          [{code:0}, {code:4}, {code:0}, {code:0}, {code:0}],
           [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
           [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
       ]},
       { name:9,
         data:[
-          [{code:1}, {code:0}, {code:0}, {code:0}, {code:0}],
-          [{code:1}, {code:1}, {code:1}, {code:1}, {code:0}],
+          [{code:4}, {code:0}, {code:0}, {code:0}, {code:0}],
+          [{code:4}, {code:4}, {code:4}, {code:4}, {code:0}],
           [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
           [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
           [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
       ]},
       { name:10,
         data:[
-          [{code:1}, {code:1}, {code:1}, {code:0}, {code:0}],
-          [{code:0}, {code:1}, {code:0}, {code:0}, {code:0}],
-          [{code:0}, {code:1}, {code:0}, {code:0}, {code:0}],
+          [{code:4}, {code:4}, {code:4}, {code:0}, {code:0}],
+          [{code:0}, {code:4}, {code:0}, {code:0}, {code:0}],
+          [{code:0}, {code:4}, {code:0}, {code:0}, {code:0}],
           [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
           [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
       ]},
       { name:11,
         data:[
-          [{code:1}, {code:0}, {code:0}, {code:0}, {code:0}],
-          [{code:1}, {code:0}, {code:0}, {code:0}, {code:0}],
-          [{code:1}, {code:1}, {code:1}, {code:0}, {code:0}],
+          [{code:4}, {code:0}, {code:0}, {code:0}, {code:0}],
+          [{code:4}, {code:0}, {code:0}, {code:0}, {code:0}],
+          [{code:4}, {code:4}, {code:4}, {code:0}, {code:0}],
           [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
           [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
       ]},
       { name:12,
         data:[
-          [{code:1}, {code:0}, {code:0}, {code:0}, {code:0}],
-          [{code:1}, {code:1}, {code:0}, {code:0}, {code:0}],
-          [{code:0}, {code:1}, {code:0}, {code:0}, {code:0}],
-          [{code:0}, {code:1}, {code:0}, {code:0}, {code:0}],
+          [{code:4}, {code:0}, {code:0}, {code:0}, {code:0}],
+          [{code:4}, {code:4}, {code:0}, {code:0}, {code:0}],
+          [{code:0}, {code:4}, {code:0}, {code:0}, {code:0}],
+          [{code:0}, {code:4}, {code:0}, {code:0}, {code:0}],
           [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
       ]},
       { name:13,
         data:[
-          [{code:1}, {code:0}, {code:0}, {code:0}, {code:0}],
-          [{code:1}, {code:1}, {code:1}, {code:0}, {code:0}],
-          [{code:0}, {code:0}, {code:1}, {code:0}, {code:0}],
+          [{code:4}, {code:0}, {code:0}, {code:0}, {code:0}],
+          [{code:4}, {code:4}, {code:4}, {code:0}, {code:0}],
+          [{code:0}, {code:0}, {code:4}, {code:0}, {code:0}],
           [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
           [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
       ]},
       { name:14,
         data:[
-          [{code:1}, {code:1}, {code:1}, {code:1}, {code:1}],
+          [{code:4}, {code:4}, {code:4}, {code:4}, {code:4}],
           [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
           [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
           [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
@@ -147,48 +174,48 @@ export default {
       ]},
       { name:15,
         data:[
-          [{code:1}, {code:0}, {code:0}, {code:0}, {code:0}],
-          [{code:1}, {code:1}, {code:0}, {code:0}, {code:0}],
-          [{code:1}, {code:1}, {code:0}, {code:0}, {code:0}],
+          [{code:4}, {code:0}, {code:0}, {code:0}, {code:0}],
+          [{code:4}, {code:4}, {code:0}, {code:0}, {code:0}],
+          [{code:4}, {code:4}, {code:0}, {code:0}, {code:0}],
           [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
           [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
       ]},
       { name:16,
         data:[
-          [{code:1}, {code:0}, {code:0}, {code:0}, {code:0}],
-          [{code:1}, {code:1}, {code:0}, {code:0}, {code:0}],
-          [{code:0}, {code:1}, {code:1}, {code:0}, {code:0}],
+          [{code:4}, {code:0}, {code:0}, {code:0}, {code:0}],
+          [{code:4}, {code:4}, {code:0}, {code:0}, {code:0}],
+          [{code:0}, {code:4}, {code:4}, {code:0}, {code:0}],
           [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
           [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
       ]},
       { name:17,
         data:[
-          [{code:1}, {code:1}, {code:0}, {code:0}, {code:0}],
-          [{code:1}, {code:0}, {code:0}, {code:0}, {code:0}],
-          [{code:1}, {code:1}, {code:0}, {code:0}, {code:0}],
+          [{code:4}, {code:4}, {code:0}, {code:0}, {code:0}],
+          [{code:4}, {code:0}, {code:0}, {code:0}, {code:0}],
+          [{code:4}, {code:4}, {code:0}, {code:0}, {code:0}],
           [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
           [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
       ]},
       { name:18,
         data:[
-          [{code:0}, {code:1}, {code:1}, {code:0}, {code:0}],
-          [{code:1}, {code:1}, {code:0}, {code:0}, {code:0}],
-          [{code:0}, {code:1}, {code:0}, {code:0}, {code:0}],
+          [{code:0}, {code:4}, {code:4}, {code:0}, {code:0}],
+          [{code:4}, {code:4}, {code:0}, {code:0}, {code:0}],
+          [{code:0}, {code:4}, {code:0}, {code:0}, {code:0}],
           [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
           [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
       ]},
       { name:19,
         data:[
-          [{code:0}, {code:1}, {code:0}, {code:0}, {code:0}],
-          [{code:1}, {code:1}, {code:1}, {code:0}, {code:0}],
-          [{code:0}, {code:1}, {code:0}, {code:0}, {code:0}],
+          [{code:0}, {code:4}, {code:0}, {code:0}, {code:0}],
+          [{code:4}, {code:4}, {code:4}, {code:0}, {code:0}],
+          [{code:0}, {code:4}, {code:0}, {code:0}, {code:0}],
           [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
           [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
       ]},
       { name:20,
         data:[
-          [{code:1}, {code:1}, {code:1}, {code:1}, {code:0}],
-          [{code:0}, {code:1}, {code:0}, {code:0}, {code:0}],
+          [{code:4}, {code:4}, {code:4}, {code:4}, {code:0}],
+          [{code:0}, {code:4}, {code:0}, {code:0}, {code:0}],
           [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
           [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
           [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
@@ -244,8 +271,8 @@ export default {
     },
     handClick(block){
       this.item = this.blocks.find(x=>x.name==block.name).data;
-      for (let i = 0; i < this.item.length; i++) {
-        for (let j = 0; j < this.item[i].length; j++) {
+      for (let i = 0; i < 5; i++) {
+        for (let j = 0; j < 5; j++) {
           this.chooseBlock[i][j].code = this.item[i][j].code
         }
       }
@@ -270,12 +297,10 @@ p{
 
 }
 
-.is-2{
-    background-color: blueviolet;
+.is-4{
+    background-color: rgb(244, 181, 10);
 }
-.is-1{
-    background-color: rgb(43, 144, 226);
-}
+
 
 .handBlock{
   height: 200px;
