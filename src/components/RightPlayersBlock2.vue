@@ -7,9 +7,9 @@
             v-for="(chooseBlockRow, vi) in chooseBlock"
             :key="vi">
             <td 
-              class="blockCell2"
+              class="blockCell2" 
               v-for="(chooseBlockCell, mi) in chooseBlockRow" 
-              :key="mi"
+              :key="mi" 
               :class="`is-${chooseBlockCell.code}`">
             </td>
           </tr>
