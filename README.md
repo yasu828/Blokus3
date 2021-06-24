@@ -1,10 +1,9 @@
-## blokus3
+# blokus3
 <img width="1424" alt="blokus3" src="https://user-images.githubusercontent.com/69378134/123233058-b5bc2280-d514-11eb-953a-8363ebdbd757.png">
+私の好きなボードゲームのアプリを作成しました。
 
 
-
-
-# 開発環境
+## 開発環境
 - Vue.js
 - Vue CLI
 - JavaScript
