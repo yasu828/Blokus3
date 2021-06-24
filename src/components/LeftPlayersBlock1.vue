@@ -1,49 +1,51 @@
 <template>
   <div class="p4">
-      <div class="handBlock">
-        <div 
-          v-for="(block, bi) in blocks" 
-          :key="bi" 
-          group="items" 
-          @click="handClick(block)"
-        >
-          <table>
-            <tr v-for="(blockTR, yi) in block.data" :key="yi">
-              <td 
-                class="blockCell" 
-                v-for="(blockTD, xi) in blockTR" 
-                :key="xi" 
-                :class="`is-${blockTD.code}`"
-              >
-              </td>
-            </tr>
-          </table>
-        </div>
-      </div>
-      <div class="chooseblocks">
-      <draggable>
+    <div class="handBlock">
+      <div 
+        v-for="(block, bi) in blocks" 
+        :key="bi" 
+        group="items" 
+        @click="handClick(block)"
+      >
         <table>
-          <tr 
-            v-for="(chooseBlockRow, vi) in chooseBlock"
-            :key="vi">
+          <tr v-for="(blockTR, yi) in block.data" :key="yi">
             <td 
-              class="blockCell2"
-              v-for="(chooseBlockCell, mi) in chooseBlockRow" 
-              :key="mi"
-              :class="`is-${chooseBlockCell.code}`">
+              class="blockCell" 
+              v-for="(blockTD, xi) in blockTR" 
+              :key="xi" 
+              :class="`is-${blockTD.code}`"
+            >
             </td>
           </tr>
         </table>
-      </draggable>
-      <div class="btn">
-        <button class="left-btn" @click.prevent @click="turnLeft()">左回転
-        </button>
-        <button class="right-btn" @click.prevent @click="turnRight()">右回転
-        </button>
       </div>
-        <button @click.prevent @click="Inversion()">反転
-        </button>
-      </div>
+    </div>
+    <div class="chooseblocks">
+    <draggable>
+      <table>
+        <tr 
+          v-for="(chooseBlockRow, vi) in chooseBlock"
+          :key="vi">
+          <td 
+            class="blockCell2"
+            v-for="(chooseBlockCell, mi) in chooseBlockRow" 
+            :key="mi"
+            :class="`is-${chooseBlockCell.code}`">
+          </td>
+        </tr>
+      </table>
+    </draggable>
+    <div class="btn">
+        <!-- 入れる配列をみて初めに0以外の数字がきたところを取得し、そこから配列データを受け皿に入れる。
+        もしくは5x5ではなくブロックごとに必要なだけの配列でそれぞれ作成する。 -->
+      <button class="left-btn" @click.prevent @click="turnLeft()">左回転
+      </button>
+      <button class="right-btn" @click.prevent @click="turnRight()">右回転
+      </button>
+    </div>
+      <button @click.prevent @click="Inversion()">反転
+      </button>
+    </div>
   </div>
 </template>
 
@@ -63,6 +65,7 @@ export default {
           [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
           [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
       ]},
+      // 数字の配列をオブジェクトの配列に変換する
       { name:1,
         data:[
           [{code:1}, {code:0}, {code:0}, {code:0}, {code:0}],
@@ -237,7 +240,7 @@ export default {
       }
       chooseBlock.push(chooseBlockRow)
       }
-
+// propsをつかうchooseBlockCell{}にAppからデータを入れたい
     return{
         blocks:blocks,
         haveItem: [],
@@ -246,6 +249,7 @@ export default {
   },
   methods: {
     turnLeft(){
+      // データのコピーをする
       this.haveItem = JSON.parse(JSON.stringify(this.chooseBlock))
       for (let i = 0; i < 5; i++) {
         for (let j = 0; j < 5; j++) {
