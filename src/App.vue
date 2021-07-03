@@ -91,14 +91,15 @@ export default {
       this.item = chooseBlock
     },
     droped(x, y){
-      for (let i = 0; i < 5; i++) {
-        for (let j = 0; j < 5; j++) {
-          if (this.mainBoard[y + i][x + j].code < 1) {
+      const itemRow = this.item.length;
+      const itemCell = this.item[0].length;
+      for (let i = 0; i < itemRow; i++) {
+        for (let j = 0; j < itemCell; j++) {
+          if (this.mainBoard[y + i][x + j].code == 0) {
             this.mainBoard[y + i][x + j].code = this.item[i][j].code;
           }
         }
       }
-      this.item3 = []
     },
   }
 }
@@ -137,7 +138,6 @@ export default {
 }
 .player1{
   grid-area: p1;
-  display: flex;
   margin: auto;
 }
 .player2{

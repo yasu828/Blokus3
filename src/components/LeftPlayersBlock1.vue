@@ -1,5 +1,5 @@
 <template>
-  <div class="p4">
+  <div class="p1">
     <div class="handBlock">
       <div 
         v-for="(block, bi) in blocks" 
@@ -7,10 +7,10 @@
         group="items" 
         @click="handClick(block)"
       >
-        <table>
+        <table class="handTable">
           <tr v-for="(blockTR, yi) in block.data" :key="yi">
             <td 
-              class="blockCell" 
+              class="handBlockCell" 
               v-for="(blockTD, xi) in blockTR" 
               :key="xi" 
               :class="`is-${blockTD.code}`"
@@ -20,31 +20,33 @@
         </table>
       </div>
     </div>
-    <div class="chooseblocks">
-    <draggable>
-      <table>
-        <tr 
-          v-for="(chooseBlockRow, vi) in chooseBlock"
-          :key="vi">
-          <td 
-            class="blockCell2"
-            v-for="(chooseBlockCell, mi) in chooseBlockRow" 
-            :key="mi"
-            :class="`is-${chooseBlockCell.code}`">
-          </td>
-        </tr>
-      </table>
-    </draggable>
-    <div class="btn">
-        <!-- 入れる配列をみて初めに0以外の数字がきたところを取得し、そこから配列データを受け皿に入れる。
-        もしくは5x5ではなくブロックごとに必要なだけの配列でそれぞれ作成する。 -->
-      <button class="left-btn" @click.prevent @click="turnLeft()">左回転
-      </button>
-      <button class="right-btn" @click.prevent @click="turnRight()">右回転
-      </button>
-    </div>
-      <button @click.prevent @click="Inversion()">反転
-      </button>
+    <div>
+      <div class="chooseblocks">
+        <draggable>
+          <table>
+            <tr 
+              v-for="(chooseBlockRow, vi) in chooseBlock"
+              :key="vi">
+              <td 
+                class="blockCell2"
+                v-for="(chooseBlockCell, mi) in chooseBlockRow" 
+                :key="mi"
+                :class="`is-${chooseBlockCell.code}`">
+              </td>
+            </tr>
+          </table>
+        </draggable>
+      </div>
+      <div class="btn">
+          <!-- 入れる配列をみて初めに0以外の数字がきたところを取得し、そこから配列データを受け皿に入れる。
+          もしくは5x5ではなくブロックごとに必要なだけの配列でそれぞれ作成する。 -->
+        <button class="left-btn" @click.prevent @click="turnLeft()">左回転
+        </button>
+        <button class="right-btn" @click.prevent @click="turnRight()">右回転
+        </button>
+        <button @click.prevent @click="Inversion()">反転
+        </button>
+      </div>
     </div>
   </div>
 </template>
@@ -59,203 +61,169 @@ export default {
     const blocks = [
       { name:0,
         data:[
-          [{code:1}, {code:0}, {code:0}, {code:0}, {code:0}],
-          [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
-          [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
-          [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
-          [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
+          [{code:1}],
       ]},
       // 数字の配列をオブジェクトの配列に変換する
       { name:1,
         data:[
-          [{code:1}, {code:0}, {code:0}, {code:0}, {code:0}],
-          [{code:1}, {code:0}, {code:0}, {code:0}, {code:0}],
-          [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
-          [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
-          [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
+          [{code:1}],
+          [{code:1}],
       ]},
       { name:2,
         data:[
-          [{code:1}, {code:0}, {code:0}, {code:0}, {code:0}],
-          [{code:1}, {code:1}, {code:0}, {code:0}, {code:0}],
-          [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
-          [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
-          [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
+          [{code:1}, {code:0}],
+          [{code:1}, {code:1}],
       ]},
       { name:3,
         data:[
-          [{code:1}, {code:1}, {code:1}, {code:0}, {code:0}],
-          [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
-          [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
-          [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
-          [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
+          [{code:1}, {code:1}, {code:1}],
       ]},
       { name:4,
         data:[
-          [{code:1}, {code:1}, {code:0}, {code:0}, {code:0}],
-          [{code:1}, {code:1}, {code:0}, {code:0}, {code:0}],
-          [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
-          [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
-          [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
+          [{code:1}, {code:1}],
+          [{code:1}, {code:1}],
       ]},
       { name:5,
         data:[
-          [{code:0}, {code:1}, {code:0}, {code:0}, {code:0}],
-          [{code:1}, {code:1}, {code:1}, {code:0}, {code:0}],
-          [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
-          [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
-          [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
+          [{code:1}, {code:0}],
+          [{code:1}, {code:1}],
+          [{code:1}, {code:0}],
       ]},
       { name:6,
         data:[
-          [{code:1}, {code:1}, {code:1}, {code:1}, {code:0}],
-          [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
-          [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
-          [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
-          [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
+          [{code:1}, {code:1}, {code:1}, {code:1}],
       ]},
       { name:7,
         data:[
-          [{code:1}, {code:0}, {code:0}, {code:0}, {code:0}],
-          [{code:1}, {code:1}, {code:1}, {code:0}, {code:0}],
-          [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
-          [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
-          [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
+          [{code:1}, {code:0}, {code:0}],
+          [{code:1}, {code:1}, {code:1}],
       ]},
       { name:8,
         data:[
-          [{code:1}, {code:0}, {code:0}, {code:0}, {code:0}],
-          [{code:1}, {code:1}, {code:0}, {code:0}, {code:0}],
-          [{code:0}, {code:1}, {code:0}, {code:0}, {code:0}],
-          [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
-          [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
+          [{code:1}, {code:0}],
+          [{code:1}, {code:1}],
+          [{code:0}, {code:1}],
       ]},
       { name:9,
         data:[
-          [{code:1}, {code:0}, {code:0}, {code:0}, {code:0}],
-          [{code:1}, {code:1}, {code:1}, {code:1}, {code:0}],
-          [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
-          [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
-          [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
+          [{code:1}, {code:0}, {code:0}, {code:0}],
+          [{code:1}, {code:1}, {code:1}, {code:1}],
       ]},
       { name:10,
         data:[
-          [{code:1}, {code:1}, {code:1}, {code:0}, {code:0}],
-          [{code:0}, {code:1}, {code:0}, {code:0}, {code:0}],
-          [{code:0}, {code:1}, {code:0}, {code:0}, {code:0}],
-          [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
-          [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
+          [{code:1}, {code:1}, {code:1}],
+          [{code:0}, {code:1}, {code:0}],
+          [{code:0}, {code:1}, {code:0}],
       ]},
       { name:11,
         data:[
-          [{code:1}, {code:0}, {code:0}, {code:0}, {code:0}],
-          [{code:1}, {code:0}, {code:0}, {code:0}, {code:0}],
-          [{code:1}, {code:1}, {code:1}, {code:0}, {code:0}],
-          [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
-          [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
+          [{code:1}, {code:0}, {code:0}],
+          [{code:1}, {code:0}, {code:0}],
+          [{code:1}, {code:1}, {code:1}],
       ]},
       { name:12,
         data:[
-          [{code:1}, {code:0}, {code:0}, {code:0}, {code:0}],
-          [{code:1}, {code:1}, {code:0}, {code:0}, {code:0}],
-          [{code:0}, {code:1}, {code:0}, {code:0}, {code:0}],
-          [{code:0}, {code:1}, {code:0}, {code:0}, {code:0}],
-          [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
+          [{code:1}, {code:0}],
+          [{code:1}, {code:1}],
+          [{code:0}, {code:1}],
+          [{code:0}, {code:1}],
       ]},
       { name:13,
         data:[
-          [{code:1}, {code:0}, {code:0}, {code:0}, {code:0}],
-          [{code:1}, {code:1}, {code:1}, {code:0}, {code:0}],
-          [{code:0}, {code:0}, {code:1}, {code:0}, {code:0}],
-          [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
-          [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
+          [{code:1}, {code:0}, {code:0}],
+          [{code:1}, {code:1}, {code:1}],
+          [{code:0}, {code:0}, {code:1}],
       ]},
       { name:14,
         data:[
           [{code:1}, {code:1}, {code:1}, {code:1}, {code:1}],
-          [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
-          [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
-          [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
-          [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
       ]},
       { name:15,
         data:[
-          [{code:1}, {code:0}, {code:0}, {code:0}, {code:0}],
-          [{code:1}, {code:1}, {code:0}, {code:0}, {code:0}],
-          [{code:1}, {code:1}, {code:0}, {code:0}, {code:0}],
-          [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
-          [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
+          [{code:1}, {code:0}],
+          [{code:1}, {code:1}],
+          [{code:1}, {code:1}],
       ]},
       { name:16,
         data:[
-          [{code:1}, {code:0}, {code:0}, {code:0}, {code:0}],
-          [{code:1}, {code:1}, {code:0}, {code:0}, {code:0}],
-          [{code:0}, {code:1}, {code:1}, {code:0}, {code:0}],
-          [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
-          [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
+          [{code:1}, {code:0}, {code:0}],
+          [{code:1}, {code:1}, {code:0}],
+          [{code:0}, {code:1}, {code:1}],
       ]},
       { name:17,
         data:[
-          [{code:1}, {code:1}, {code:0}, {code:0}, {code:0}],
-          [{code:1}, {code:0}, {code:0}, {code:0}, {code:0}],
-          [{code:1}, {code:1}, {code:0}, {code:0}, {code:0}],
-          [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
-          [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
+          [{code:1}, {code:1}],
+          [{code:1}, {code:0}],
+          [{code:1}, {code:1}],
       ]},
       { name:18,
         data:[
-          [{code:0}, {code:1}, {code:1}, {code:0}, {code:0}],
-          [{code:1}, {code:1}, {code:0}, {code:0}, {code:0}],
-          [{code:0}, {code:1}, {code:0}, {code:0}, {code:0}],
-          [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
-          [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
+          [{code:0}, {code:1}, {code:1}],
+          [{code:1}, {code:1}, {code:0}],
+          [{code:0}, {code:1}, {code:0}],
       ]},
       { name:19,
         data:[
-          [{code:0}, {code:1}, {code:0}, {code:0}, {code:0}],
-          [{code:1}, {code:1}, {code:1}, {code:0}, {code:0}],
-          [{code:0}, {code:1}, {code:0}, {code:0}, {code:0}],
-          [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
-          [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
+          [{code:0}, {code:1}, {code:0}],
+          [{code:1}, {code:1}, {code:1}],
+          [{code:0}, {code:1}, {code:0}],
       ]},
       { name:20,
         data:[
-          [{code:1}, {code:1}, {code:1}, {code:1}, {code:0}],
-          [{code:0}, {code:1}, {code:0}, {code:0}, {code:0}],
-          [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
-          [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
-          [{code:0}, {code:0}, {code:0}, {code:0}, {code:0}],
+          [{code:1}, {code:1}, {code:1}, {code:1}],
+          [{code:0}, {code:1}, {code:0}, {code:0}],
       ]},
     ];
-    const chooseBlock = [];
-      for (let y = 0; y < 5; y++ ) {
-        const chooseBlockRow = []
-        for (let x = 0; x < 5; x++){
-          const chooseBlockCell = {
-            y: y,
-            x: x,
-            code: 0,
-          };
-        chooseBlockRow.push(chooseBlockCell)
-      }
-      chooseBlock.push(chooseBlockRow)
-      }
+    // const chooseBlock = [];
+    //   for (let y = 0; y < 5; y++ ) {
+    //     const chooseBlockRow = []
+    //     for (let x = 0; x < 5; x++){
+    //       const chooseBlockCell = {
+    //         y: y,
+    //         x: x,
+    //         code: 0,
+    //       };
+    //     chooseBlockRow.push(chooseBlockCell)
+    //   }
+    //   chooseBlock.push(chooseBlockRow)
+    //   }
 // propsをつかうchooseBlockCell{}にAppからデータを入れたい
     return{
         blocks:blocks,
         haveItem: [],
-        chooseBlock: chooseBlock,
+        chooseBlock: [],
+        testhave: [],
+        // blockdata:{
+        //   y: y,
+        //   x: x,
+        //   code:""
+        // },
     }
   },
   methods: {
     turnLeft(){
       // データのコピーをする
       this.haveItem = JSON.parse(JSON.stringify(this.chooseBlock))
-      for (let i = 0; i < 5; i++) {
-        for (let j = 0; j < 5; j++) {
-          this.chooseBlock[4 - i][j].code = this.haveItem[j][i].code
+      console.log(this.haveItem.length)
+      const ROW = this.haveItem.length;
+      const COL = this.haveItem[0].length;
+      const col = COL-1;
+      const Turnchoose = []
+      for (let x = 0; x < COL; x++) {
+        const TurnBlockRow = []
+        for (let y = 0; y < ROW; y++) {
+          const num = this.haveItem[y][col-x].code
+          const TurnBlockCell = {
+            y: y,
+            x: x,
+            code: num,
+          };
+        TurnBlockRow.push(TurnBlockCell)
         }
+      Turnchoose.push(TurnBlockRow)
       }
+      this.chooseBlock = Turnchoose
+      // this.$emit("click2",this.chooseBlock);
     },
     turnRight(){
       this.haveItem = JSON.parse(JSON.stringify(this.chooseBlock))
@@ -274,10 +242,10 @@ export default {
       }
     },
     handClick(block){
-      this.item = this.blocks.find(x=>x.name==block.name).data;
-      for (let i = 0; i < 5; i++) {
-        for (let j = 0; j < 5; j++) {
-          this.chooseBlock[i][j].code = this.item[i][j].code
+      this.chooseBlock = this.blocks.find(x=>x.name==block.name).data;
+      for (let i = 0; i < this.chooseBlock.lenght; i++) {
+        for (let j = 0; j < this.chooseBlock[i].lenght; j++) {
+          this.chooseBlock = this.item[i][j].code
         }
       }
       this.$emit("click",this.chooseBlock);
@@ -287,10 +255,18 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.blockCell{
+.p1{
+  display: flex;
+}
+.handBlockCell{
   height: 6px;
   width: 6px;
 }
+
+.handTable{
+  margin: 5px;
+}
+
 .blockCell2{
   height: 20px;
   width: 20px;
