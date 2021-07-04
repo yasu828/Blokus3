@@ -193,6 +193,9 @@ export default {
         haveItem: [],
         chooseBlock: [],
         testhave: [],
+        haveRow: "",
+        haveCOL: "",
+        col: "",
         // blockdata:{
         //   y: y,
         //   x: x,
@@ -204,12 +207,9 @@ export default {
     turnLeft(){
       // データのコピーをする
       this.haveItem = JSON.parse(JSON.stringify(this.chooseBlock))
-      const haveRow = this.haveItem.length;
-      const haveCOL = this.haveItem[0].length;
-      const col = haveCOL-1;
-      for (let x = 0; x < haveCOL; x++) {
-        for (let y = 0; y < haveRow; y++) {
-          this.chooseBlock[x][y].code = this.haveItem[y][col-x].code
+      for (let x = 0; x < this.haveCOL; x++) {
+        for (let y = 0; y < this.haveRow; y++) {
+          this.chooseBlock[x][y].code = this.haveItem[y][this.col-x].code
         }
       }
       this.$emit("click2",this.chooseBlock);
@@ -232,6 +232,9 @@ export default {
     },
     handClick(block){
       this.chooseBlock = this.blocks.find(x=>x.name==block.name).data;
+      this.haveRow = this.chooseBlock.length;
+      this.haveCOL = this.chooseBlock[0].length;
+      this.col = this.haveCOL-1;
       for (let i = 0; i < this.chooseBlock.lenght; i++) {
         for (let j = 0; j < this.chooseBlock[i].lenght; j++) {
           this.chooseBlock = this.item[i][j].code
