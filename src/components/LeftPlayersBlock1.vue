@@ -207,23 +207,12 @@ export default {
       const haveRow = this.haveItem.length;
       const haveCOL = this.haveItem[0].length;
       const col = haveCOL-1;
-      const Turnchoose = []
       for (let x = 0; x < haveCOL; x++) {
-        const TurnBlockRow = []
         for (let y = 0; y < haveRow; y++) {
-          const num = this.haveItem[y][col-x].code
-          const TurnBlockCell = {
-            y: y,
-            x: x,
-            code: num,
-          };
-        TurnBlockRow.push(TurnBlockCell)
+          this.chooseBlock[x][y].code = this.haveItem[y][col-x].code
         }
-      Turnchoose.push(TurnBlockRow)
       }
-      this.chooseBlock = Turnchoose
       this.$emit("click2",this.chooseBlock);
-      // this.$emit("click2",this.chooseBlock);
     },
     turnRight(){
       this.haveItem = JSON.parse(JSON.stringify(this.chooseBlock))
