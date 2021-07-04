@@ -4,6 +4,7 @@
     <LeftPlayersBlock1 
     class="player1"
     @click="handClick"
+    @click2="turnLeft"
     >
     </LeftPlayersBlock1>
 
@@ -88,6 +89,9 @@ export default {
   },
   methods:{
     handClick(chooseBlock){
+      this.item = chooseBlock
+    },
+    turnLeft(chooseBlock) {
       this.item = chooseBlock
     },
     droped(x, y){

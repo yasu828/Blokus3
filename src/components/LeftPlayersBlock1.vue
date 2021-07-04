@@ -204,14 +204,13 @@ export default {
     turnLeft(){
       // データのコピーをする
       this.haveItem = JSON.parse(JSON.stringify(this.chooseBlock))
-      console.log(this.haveItem.length)
-      const ROW = this.haveItem.length;
-      const COL = this.haveItem[0].length;
-      const col = COL-1;
+      const haveRow = this.haveItem.length;
+      const haveCOL = this.haveItem[0].length;
+      const col = haveCOL-1;
       const Turnchoose = []
-      for (let x = 0; x < COL; x++) {
+      for (let x = 0; x < haveCOL; x++) {
         const TurnBlockRow = []
-        for (let y = 0; y < ROW; y++) {
+        for (let y = 0; y < haveRow; y++) {
           const num = this.haveItem[y][col-x].code
           const TurnBlockCell = {
             y: y,
@@ -223,6 +222,7 @@ export default {
       Turnchoose.push(TurnBlockRow)
       }
       this.chooseBlock = Turnchoose
+      this.$emit("click2",this.chooseBlock);
       // this.$emit("click2",this.chooseBlock);
     },
     turnRight(){
