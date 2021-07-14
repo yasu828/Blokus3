@@ -213,10 +213,11 @@ export default {
             y:y,
             x:x,
             code: this.haveItem[y][this.col-x].code
-          })
+          });
+          this.chooseBlock[x].splice(0, 1)
         }
       }
-      this.chooseBlock.slice(0,chooseBlock[col].lenght)
+      // this.chooseBlock.slice(0,chooseBlock[col].lenght)
       //  = this.haveItem[y][this.col-x].code
       this.$emit("click2",this.chooseBlock);
     },
