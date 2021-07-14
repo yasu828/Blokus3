@@ -196,11 +196,6 @@ export default {
         haveRow: "",
         haveCOL: "",
         col: "",
-        // blockdata:{
-        //   y: y,
-        //   x: x,
-        //   code:""
-        // },
     }
   },
   methods: {
@@ -217,17 +212,21 @@ export default {
           this.chooseBlock[x].splice(0, 1)
         }
       }
-      // this.chooseBlock.slice(0,chooseBlock[col].lenght)
-      //  = this.haveItem[y][this.col-x].code
       this.$emit("click2",this.chooseBlock);
     },
     turnRight(){
       this.haveItem = JSON.parse(JSON.stringify(this.chooseBlock))
-      for (let i = 0; i < 5; i++) {
-        for (let j = 0; j < 5; j++) {
-          this.chooseBlock[i][4 - j].code = this.haveItem[j][i].code
+      for (let x = 0; x < this.haveCOL; x++) {
+        for (let y = 0; y < this.haveRow; y++) {
+          this.chooseBlock[x].push({
+            y:y,
+            x:x,
+            code: this.haveItem[this.col - y][x].code
+          });
+          this.chooseBlock[x].splice(0, 1)
         }
       }
+      this.$emit("click2",this.chooseBlock);
     },
     Inversion(){
       this.haveItem = JSON.parse(JSON.stringify(this.chooseBlock))
