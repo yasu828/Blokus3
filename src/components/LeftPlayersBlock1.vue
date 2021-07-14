@@ -209,9 +209,15 @@ export default {
       this.haveItem = JSON.parse(JSON.stringify(this.chooseBlock))
       for (let x = 0; x < this.haveCOL; x++) {
         for (let y = 0; y < this.haveRow; y++) {
-          this.chooseBlock[x][y].code = this.haveItem[y][this.col-x].code
+          this.chooseBlock[x].push({
+            y:y,
+            x:x,
+            code: this.haveItem[y][this.col-x].code
+          })
         }
       }
+      this.chooseBlock.slice(0,chooseBlock[col].lenght)
+      //  = this.haveItem[y][this.col-x].code
       this.$emit("click2",this.chooseBlock);
     },
     turnRight(){
@@ -231,7 +237,7 @@ export default {
       }
     },
     handClick(block){
-      this.chooseBlock = this.blocks.find(x=>x.name==block.name).data;
+      this.chooseBlock = JSON.parse(JSON.stringify(this.blocks.find(x=>x.name==block.name).data));
       this.haveRow = this.chooseBlock.length;
       this.haveCOL = this.chooseBlock[0].length;
       this.col = this.haveCOL-1;
