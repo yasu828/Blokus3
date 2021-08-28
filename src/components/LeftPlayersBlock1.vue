@@ -174,24 +174,24 @@ export default {
           [{code:0}, {code:1}, {code:0}, {code:0}],
       ]},
     ];
-    // const chooseBlock = [];
-    //   for (let y = 0; y < 5; y++ ) {
-    //     const chooseBlockRow = []
-    //     for (let x = 0; x < 5; x++){
-    //       const chooseBlockCell = {
-    //         y: y,
-    //         x: x,
-    //         code: 0,
-    //       };
-    //     chooseBlockRow.push(chooseBlockCell)
-    //   }
-    //   chooseBlock.push(chooseBlockRow)
-    //   }
+    const chooseBlock = [];
+      for (let y = 0; y < 5; y++ ) {
+        const chooseBlockRow = []
+        for (let x = 0; x < 5; x++){
+          const chooseBlockCell = {
+            y: y,
+            x: x,
+            code: 0,
+          };
+        chooseBlockRow.push(chooseBlockCell)
+      }
+      chooseBlock.push(chooseBlockRow)
+      }
 // propsをつかうchooseBlockCell{}にAppからデータを入れたい
     return{
         blocks:blocks,
         haveItem: [],
-        chooseBlock: [],
+        chooseBlock: chooseBlock,
         testhave: [],
         haveRow: "",
         haveCOL: "",
@@ -229,21 +229,29 @@ export default {
       this.$emit("click2",this.chooseBlock);
     },
     Inversion(){
-      this.haveItem = JSON.parse(JSON.stringify(this.chooseBlock))
-      for (let i = 0; i < 5; i++) {
-        for (let j = 0; j < 5; j++) {
-          this.chooseBlock[i][j].code = this.haveItem[j][i].code
+     this.haveItem = JSON.parse(JSON.stringify(this.chooseBlock))
+      for (let x = 0; x < this.haveCOL; x++) {
+        for (let y = 0; y < this.haveRow; y++) {
+          this.chooseBlock[x].push({
+            y:y,
+            x:x,
+            code: this.haveItem[y][x].code
+          });
+          this.chooseBlock[x].splice(0, 1)
         }
       }
+      this.$emit("click2",this.chooseBlock);
     },
     handClick(block){
-      this.chooseBlock = JSON.parse(JSON.stringify(this.blocks.find(x=>x.name==block.name).data));
-      this.haveRow = this.chooseBlock.length;
-      this.haveCOL = this.chooseBlock[0].length;
+      const item = JSON.parse(JSON.stringify(this.blocks.find(x=>x.name==block.name).data));
+      console.log(item[0][0].code)
+      console.log(this.chooseBlock)
+      this.haveRow = item.length;
+      this.haveCOL = item[0].length;
       this.col = this.haveCOL-1;
-      for (let i = 0; i < this.chooseBlock.lenght; i++) {
-        for (let j = 0; j < this.chooseBlock[i].lenght; j++) {
-          this.chooseBlock = this.item[i][j].code
+      for (let i = 0; i < this.haveRow; i++) {
+        for (let j = 0; j < this.haveCOL; j++) {
+          this.chooseBlock[i][j].code = item[i][j].code
         }
       }
       this.$emit("click",this.chooseBlock);
